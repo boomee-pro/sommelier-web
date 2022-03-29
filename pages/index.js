@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import Layout from '../components/Layout/layout'
 import styles from '../styles/Home.module.css'
 
 export default function Home() {
@@ -10,5 +11,13 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
     </div>
+  )
+}
+
+Home.getLayout = function getLayout(page) {
+  return (
+    <Layout>
+      {page}
+    </Layout>
   )
 }
