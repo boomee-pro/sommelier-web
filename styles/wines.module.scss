@@ -2,18 +2,24 @@
   width: 80%;
   margin: 100px auto;
   display: grid;
-  gap: 20px;
+  gap: 3em;
   grid-template-columns: repeat(4, 1fr);
 }
 
 @media (max-width: 768px) {
   .container {
     display: block;
-  } 
+  }
 }
 
-@media (max-width: 1825) {
+@media (max-width: 1333px) {
   .container {
     grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 986px) {
+  .container {
+    grid-template-columns: repeat(2, 1fr);
   }
 }

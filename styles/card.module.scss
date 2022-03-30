@@ -1,37 +1,109 @@
 $shadow: 0px 4px 4px hsla(0, 0%, 0%, 0.25);
+.overlayWine {
+  position: relative !important;
+  display: grid;
+  grid-template-areas: 'overlay';
+  padding-bottom: 20px;
 
-.wine {
-  min-width: 350px;
-  height: 350px;
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   span {
+    grid-area: overlay;
     overflow: visible !important;
   }
+  
+
   .wineBottle {
+    z-index: 1;
     position: absolute !important;
-    bottom: 5em !important;
-    pointer-events: none;
+    bottom: 3em !important;
   }
 
   .backWine {
     position: absolute !important;
-    left: -4em !important;
-    top: 3em !important;
+    left: -2em !important;
+    z-index: 0;
     rotate: 36deg;
-    opacity: 0.3;
-    max-width: 100%;
-    object-fit: cover;
-    border: 1px solid red;
+    opacity: .2;
+    object-fit: cover !important;
   }
 
   .flag {
+    z-index: 3;
     position: absolute !important;
-    right: 1em !important;
+    margin: 0 !important;
+    top: auto !important;
+    left: auto !important;
+    right: 1.5em !important;
+    bottom: 0 !important;
+
+    width: 28px !important;
+    height: 37px !important;
+    min-height: 28px !important;
+    max-height: 28px !important;
+    max-width: 37px !important;
+    min-width: 37px !important;
   }
 }
+// .wine {
+//   position: relative;
+//   display: flex;
+//   justify-content: center;
+
+//   .wineBottle {
+//     position: relative !important;
+//     max-width: 100%;
+//     bottom: 2em;
+//     z-index: 1;
+//   }
+
+//   .backWine {
+//     position: absolute;
+//     max-width: 140%;
+//     rotate: 36deg;
+//     left: -4em;
+//     opacity: .2;
+//     z-index: 0;
+//   }
+
+//   .flag {
+//     position: absolute;
+//     max-width: 39px;
+//     bottom: 0.5em;
+//     right: 1em;
+//   }
+// }
+
+// .wine {
+//   // min-width: 350px;
+//   // height: 350px;
+//   position: relative;
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+  // span {
+  //   overflow: visible !important;
+  // }
+  // .wineBottle {
+  //   position: absolute !important;
+  //   bottom: 5em !important;
+  //   pointer-events: none;
+  // }
+
+  // .backWine {
+  //   position: absolute !important;
+  //   left: -4em !important;
+  //   top: 3em !important;
+  //   rotate: 36deg;
+  //   opacity: 0.3;
+  //   max-width: 100%;
+  //   object-fit: cover;
+  //   border: 1px solid red;
+  // }
+
+  // .flag {
+  //   position: absolute !important;
+  //   right: 1em !important;
+  // }
+// }
 
 
 .card {
@@ -40,15 +112,20 @@ $shadow: 0px 4px 4px hsla(0, 0%, 0%, 0.25);
   border: 3px solid var(--gold-main);
   border-radius: 20px;
 
-  div,
+  h2,
   p {
-    font-size: 17px;
     color: var(--blue-dark);
     margin: 0;
   }
 
-  div {
+  p {
+    font-size: 15px;
+  }
+
+  h2 {
+    font-size: 17px;
     font-style: italic;
+    font-weight: 300;
   }
 
   button {

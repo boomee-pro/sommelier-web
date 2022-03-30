@@ -11,7 +11,7 @@ export default function Wines() {
       name: "Montrachet Grand Cru",
       price: 4205,
       origin: "France",
-      domain: "Leflaive",
+      domain: "Domaine Leflaive",
       img: "/wines/grand-cru.png",
       flag: "/flags/FR.svg"
     },
@@ -20,7 +20,7 @@ export default function Wines() {
       name: "Roumier Musigny Grand Cru",
       price: 4205,
       origin: "France",
-      domain: "Georges & Christophe",
+      domain: "Domaine Georges & Christophe",
       img: "/wines/musigny.png",
       flag: "/flags/FR.svg"
     },
@@ -38,7 +38,7 @@ export default function Wines() {
       name: "Romanée-Conti Grand Cru",
       price: 4205,
       origin: "France",
-      domain: "de la Romanée-Conti",
+      domain: "Domaine de la Romanée-Conti",
       img: "/wines/romanee.png",
       flag: "/flags/FR.svg"
     },
