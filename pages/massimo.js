@@ -6,7 +6,7 @@ const wine = {
   price: 4205,
   origin: "France",
   domain: "Leflaive",
-  img: "/wine-placeholder.png"
+  img: "/grand-cru.png"
 }
 
 export default function Massimo() {
