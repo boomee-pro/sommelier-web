@@ -1,4 +1,5 @@
-import styles from '../styles/Signin.module.scss';
+import Head from "next/head"
+import styles from '../styles/auth.module.scss';
 import Image from 'next/image';
 import Wine from '../public/wine2.png';
 import Mail from '../public/bx-envelope.svg';
@@ -8,13 +9,15 @@ export default function SignIn() {
   return (
     
     <section>
-
+      <Head>
+        <title>Connexion</title>
+        <meta name="description" content="Page de connexion" />
+      </Head>
       <div className={styles.container}>
 
         <div className={styles.image}>
           <Image src={Wine} alt="" layout="fill"/>
         </div>
-        {/* <div className={styles.image}></div> */}
         
         <div className={styles.dataContainer}>
 

@@ -5,6 +5,7 @@
 
 .image {
   flex: 1;
+  opacity: 0.9;
   position: relative;
   pointer-events: none;
 }
@@ -15,6 +16,14 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+.splitGroup {
+  display: flex;
+  gap: 20px;
+}
+
+.splitGroup > * {
+  flex: 1;
 }
 
 .data {
@@ -30,7 +39,7 @@
 
   .inputGroup {
     position: relative;
-    margin: 30px auto;
+    margin-bottom: 25px;
 
     input {
       border-radius: 18px;
@@ -45,14 +54,13 @@
 
     svg {
       position: absolute;
-      top: 12px;
+      top: 13px;
       left: 8%;
     }
   }
 
   .forgotPass {
-    display: block;
-    text-align: left;
+    margin-right: auto;
     color: #797979;
   }
 
@@ -68,21 +76,30 @@
     letter-spacing: 1px;
   }
 
+  button:hover{
+    outline: 1px solid var(--gold-main);
+    transition: .3s;
+    font-size: 17px;
+  }
+  
+
   a {
     color: var(--gold-main);
-    border: 1px solid red;
   }
 
 }
 
-@media screen and (max-width: 962px) {
+@media screen and (max-width: 1315px) {
   .image {
     display: none;
   }
 }
 
-@media screen and (max-width: 672px) {
+@media screen and (max-width: 700px) {
   .data {
     width: 80%;
+  }
+  .splitGroup {
+    display: block;
   }
 }

@@ -1,9 +1,40 @@
+$shadow: 0px 4px 4px hsla(0, 0%, 0%, 0.25);
+
+.wine {
+  min-width: 350px;
+  height: 350px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  span {
+    overflow: visible !important;
+  }
+  .wineBottle {
+    position: absolute !important;
+    bottom: 5em !important;
+    pointer-events: none;
+  }
+
+  .backWine {
+    position: absolute !important;
+    left: -4em !important;
+    top: 3em !important;
+    rotate: 36deg;
+    opacity: 0.3;
+    max-width: 100%;
+    object-fit: cover;
+    border: 1px solid red;
+  }
+
+  .flag {
+    position: absolute !important;
+    right: 1em !important;
+  }
+}
+
 
 .card {
-  $shadow: 0px 4px 4px hsla(0, 0%, 0%, 0.25);
-
-  width: 325px;
-  height: 501px;
   text-align: center;
   box-shadow: $shadow;
   border: 3px solid var(--gold-main);
@@ -13,6 +44,7 @@
   p {
     font-size: 17px;
     color: var(--blue-dark);
+    margin: 0;
   }
 
   div {
@@ -20,15 +52,13 @@
   }
 
   button {
-    width: 215px;
-    height: 35px;
-    margin: 0 auto;
     background: var(--red-main);
     box-shadow: $shadow;
     border-radius: 30px;
     color: white;
-    font-family: 'PT Serif', sans-serif;
     font-style: normal;
     font-size: 19px;
+    width: 65%;
+    margin: 25px;
   }
 }
