@@ -5,6 +5,7 @@ import styles from "../styles/card.module.scss"
 export default function Card({ wine }) {
   return (
     <div className={styles.card}>
+      {/*<Image src={"/grapes-drawing.png"} alt="grapes" width={449.6} height={320.49} />*/}
       <Image src={wine.img} alt="Wine" width={349} height={349}/>
       <div>Domaine {wine.domain}</div>
       <p>{wine.name}</p>
