@@ -1,4 +1,5 @@
 import styles from '../../styles/layout.module.scss';
+import Link from 'next/link';
 
 export default function Navbar() {
   return (
@@ -10,8 +11,8 @@ export default function Navbar() {
       <div className={styles.logo}>Sommelier</div>
       <div className={styles.items}>
         <ul>
-          <li>Accueil</li>
-          <li>Vins</li>
+          <li><Link href="/">Accueil</Link></li>
+          <li><Link href="/wines">Vins</Link></li>
           <li>Notre boutique</li>
           <li>Notre histoire</li>
           <li className={styles.spacer}></li>

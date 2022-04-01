@@ -2,6 +2,8 @@ import Head from "next/head"
 import Card from "../../components/card"
 import styles from "../../styles/wines.module.scss"
 
+import Layout from '../../components/Layout/layout';
+
 
 
 export default function Wines() {
@@ -55,9 +57,20 @@ export default function Wines() {
       {wines.map((wine) => 
         <Card key={wine.id} wine={wine}/>
       )}
+            {wines.map((wine) => 
+        <Card key={wine.id} wine={wine}/>
+      )}
       </div>
 
 
     </div>
+  )
+}
+
+Wines.getLayout = function getLayout(page) {
+  return (
+    <Layout>
+      {page}
+    </Layout>
   )
 }

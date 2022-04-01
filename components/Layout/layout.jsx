@@ -6,6 +6,7 @@ export default function Layout ({children}) {
 
   return (
     <>
+      <div className="background"></div>
       <Navbar />
       <Cart />
       <main>{children}</main>
