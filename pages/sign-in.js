@@ -8,7 +8,7 @@ export default function SignIn() {
 
   return (
     
-    <section>
+    <>
       <Head>
         <title>Connexion</title>
         <meta name="description" content="Page de connexion" />
@@ -49,6 +49,6 @@ export default function SignIn() {
 
       </div>
 
-    </section>
+    </>
   )
 }
