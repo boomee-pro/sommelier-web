@@ -1,0 +1,19 @@
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["mongoDb"]
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("MONGO_URI")
+}
+
+model wines {
+  id     String @id @default(auto()) @map("_id") @db.ObjectId
+  domain String
+  flag   String
+  img    String
+  name   String @unique
+  origin String
+  price  Float
+}
