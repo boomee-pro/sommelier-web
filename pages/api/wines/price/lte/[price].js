@@ -1,7 +1,8 @@
 import prisma from "../../../../../lib/prisma";
 
 export default async function handle(req, res) {
-  const price = parseFloat(req.query.price);
+  let { price, sort } = req.query;
+  price = parseFloat(price);
   const wines = await prisma.wines.findMany({
     where: {
       price: {
