@@ -8,6 +8,7 @@ export default async function handle(req, res) {
         lte: price, //less than or equal
       },
     },
+    orderBy: [{ price: sort }], //asc or desc
   });
   res.json(wines);
 }
