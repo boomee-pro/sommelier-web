@@ -1,6 +1,7 @@
 .container {
     width: 80%;
     margin: 100px auto;
+    overflow: hidden;
 
     .sectionImg {
         width: 100%;
@@ -23,5 +24,51 @@
             text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
         }
 
-      }
+    }
+
+    .favoriteWine {
+        width: 100%;
+        text-align: center;
+        overflow: hidden;
+
+        .background {
+            position: absolute;
+            width: 80%;
+            height: 70%;
+            background-image: url('/nav.png');
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+            opacity: 0.1;
+            z-index: -1;
+        }
+
+        h1 {
+            color: var(--red-main);
+            font-size: 35px;
+            margin: 50px;
+        }
+        
+
+        .favoriteWineContainer {
+            width: 80%;
+            margin: 0 auto;
+            gap: 20px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        button:last-child {
+            background-color: var(--red-main);
+            color: white;
+            font-size: 15px;
+            padding: 10px 20px;
+            box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+            border-radius: 30px;
+            text-transform: uppercase;
+            margin: 40px;
+        }
+    
+    }
+
+
 }

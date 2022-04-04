@@ -53,7 +53,8 @@ export default function Home() {
         </section>
 
         <section className={styles.favoriteWine}>
-          <h3>Vos préférés</h3>
+          <div className={styles.background}></div>
+          <h1>Vos préférés</h1>
           <div className={styles.favoriteWineContainer}>
           {wines.map((wine) => 
             <Card key={wine.id} wine={wine}/>
