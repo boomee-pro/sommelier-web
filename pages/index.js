@@ -1,9 +1,8 @@
 import Head from 'next/head'
-import Layout from '../components/Layout/layout'
-import styles from '../styles/home.module.scss'
-import Image from 'next/image';
+import Layout from 'components/Layout/layout'
+import styles from 'styles/home.module.scss'
 
-import Card from '../components/card';
+import Card from 'components/card';
 
 export default function Home() {
 
@@ -63,8 +62,16 @@ export default function Home() {
           <button>Voir tous les vins</button>
         </section>
 
-        <section>
-
+        <section className={styles.sectionHome}>
+            <h1>High Quality Wine for you and your beloved ones</h1>
+            <div className={styles.images}>
+              <img src="/section/1.jpg"/>
+              <img src="/section/2.jpg"/>
+              <img src="/section/3.jpg"/>
+            </div>
+            <p>
+             &quot;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod temporincididunt ut labore et dolore magna aliqua.&quot;
+            </p>
         </section>
 
       </div>

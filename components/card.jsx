@@ -1,5 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
-import styles from "../styles/card.module.scss"
+import styles from "styles/card.module.scss"
 
 export default function Card({ wine }) {
   return (

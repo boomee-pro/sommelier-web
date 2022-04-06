@@ -1,7 +1,7 @@
 import { useState } from "react";
 import classnames from "classnames";
 
-import styles from '../../styles/layout.module.scss';
+import styles from 'styles/layout.module.scss';
 
 export default function Cart() {
   

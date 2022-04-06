@@ -1,13 +1,13 @@
 import Head from "next/head"
-import styles from '../styles/auth.module.scss';
+import styles from 'styles/auth.module.scss';
 import Image from 'next/image';
-import Wine from '../public/wine2.png';
-import Mail from '../public/bx-envelope.svg';
+import Wine from 'public/wine2.png';
+
+import Layout from "components/Layout/layout";
 
 export default function SignIn() {
 
   return (
-    
     <>
       <Head>
         <title>Connexion</title>

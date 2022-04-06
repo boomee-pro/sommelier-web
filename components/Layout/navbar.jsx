@@ -1,4 +1,4 @@
-import styles from '../../styles/layout.module.scss';
+import styles from 'styles/layout.module.scss';
 import Link from 'next/link';
 import { useRouter } from "next/router";
 import classNames from 'classnames';

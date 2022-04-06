@@ -1,7 +1,7 @@
 import Head from "next/head"
-import styles from '../styles/auth.module.scss';
+import styles from 'styles/auth.module.scss';
 import Image from 'next/image';
-import Wine from '../public/wine2.png';
+import Wine from 'public/wine2.png';
 
 export default function SignUp() {
 
