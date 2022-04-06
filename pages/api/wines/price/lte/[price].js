@@ -1,4 +1,4 @@
-import prisma from "../../../../../lib/prisma";
+import prisma from "lib/prisma";
 
 export default async function handle(req, res) {
   let { price, sort } = req.query;
@@ -9,7 +9,7 @@ export default async function handle(req, res) {
         lte: price, //less than or equal
       },
     },
-    orderBy: [{ price: sort }], //asc or desc
+    orderBy: { price: sort }, //asc or desc
   });
   res.json(wines);
 }
