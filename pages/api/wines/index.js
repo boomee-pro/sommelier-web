@@ -28,6 +28,7 @@ export default async function handle(req, res) {
       }
       result = await prisma.wines.findMany();
       res.json(result);
+      break;
 
     default:
       res.status(404).json({ error: "Invalid method." });
