@@ -74,7 +74,27 @@ export default function Home() {
             </p>
         </section>
 
+
+
+        <section className={styles.sectionInformations}>
+          <img src="/maps.png" />
+          <div className={styles.info}>
+            <h2>Good Wine Shop&apos;s Logo</h2>
+            <div className={styles.adress}>
+              <p>37 boulevard Artiside</p>
+              <p>Le cannet, Provence Alpes Côte Azur</p>
+              <p>France, 06100</p>
+            </div>
+
+            <div className={styles.data}>
+              <p>Tel: (+33) 04.60.00.80.00</p>
+              <p>Email: fr.order@goodwhineshop.com</p>
+            </div>
+
+          </div>
+        </section>
       </div>
+
 
 
 

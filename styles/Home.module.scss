@@ -97,4 +97,29 @@
 
     }
 
+    .sectionInformations {
+        width: 100%;
+        display: grid;
+        grid-template-columns: 50% 50%;
+        img {
+            width: 100%;
+        }
+        .info {
+            width: 100%;
+            padding-left: 50px;
+
+            h2 {
+                color: var(--gold-main);
+            }
+
+            p {
+                line-height: 5px;
+            }
+
+            .data {
+                margin-top: 50px;
+            }
+        }
+    }
+
 }
