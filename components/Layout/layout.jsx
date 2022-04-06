@@ -1,5 +1,5 @@
 import Navbar from './navbar';
-import Cart from './cart';
+import Cart from '../Cart/cart';
 import Footer from './footer';
 
 export default function Layout ({children}) {

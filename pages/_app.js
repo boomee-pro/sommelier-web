@@ -1,14 +1,18 @@
-import { Provider } from "react-redux";
-import store from "redux/store";
+import { useEffect } from "react";
 import 'styles/globals.css';
+
+import { CartProvider } from "contexts/CartContext";
+
+
 
 export default function MyApp({ Component, pageProps }) {
   
-  const getLayout = Component.getLayout || ((page) => page)
+
+  const getLayout = Component.getLayout || ((page) => page);
 
   return (
-    <Provider store={store}>
+    <CartProvider>
       {getLayout(<Component {...pageProps} />)}
-    </Provider>
+    </CartProvider>
   )
 }
