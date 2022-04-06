@@ -1,4 +1,4 @@
-import prisma from "../../../lib/prisma";
+import prisma from "lib/prisma";
 
 export default async function handle(req, res) {
   let result;
@@ -20,6 +20,12 @@ export default async function handle(req, res) {
       break;
 
     case "GET":
+      const { filter } = req.query;
+      let options = {}
+      if (filter) {
+        options.where = {}
+        options.where.price = {}
+      }
       result = await prisma.wines.findMany();
       res.json(result);
 
