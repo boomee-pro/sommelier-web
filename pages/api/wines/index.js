@@ -13,18 +13,18 @@ export default async function handle(req, res) {
           origin: origin,
           domain: domain,
           img: img,
-          flag: flag,
-        },
+          flag: flag
+        }
       });
       res.json(result);
       break;
 
     case "GET":
       const { filter } = req.query;
-      let options = {}
+      let options = {};
       if (filter) {
-        options.where = {}
-        options.where.price = {}
+        options.where = {};
+        options.where.price = {};
       }
       result = await prisma.wines.findMany();
       res.json(result);

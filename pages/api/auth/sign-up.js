@@ -10,8 +10,8 @@ export default async function handle(req, res) {
       const result = await prisma.users.create({
         data: {
           email: email,
-          password: hash,
-        },
+          password: hash
+        }
       });
       res.json(result);
       break;

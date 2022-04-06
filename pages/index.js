@@ -1,11 +1,10 @@
-import Head from 'next/head'
-import Layout from 'components/Layout/layout'
-import styles from 'styles/home.module.scss'
+import Head from "next/head";
+import Layout from "components/Layout/layout";
+import styles from "styles/home.module.scss";
 
-import Card from 'components/card';
+import Card from "components/card";
 
 export default function Home() {
-
   const wines = [
     {
       id: 0,
@@ -33,8 +32,8 @@ export default function Home() {
       domain: "Bruno Giacosa Collina Rionda",
       img: "/wines/barolo.png",
       flag: "/flags/IT.svg"
-    },
-  ]
+    }
+  ];
 
   return (
     <>
@@ -45,9 +44,8 @@ export default function Home() {
       </Head>
 
       <div className={styles.container}>
-
         <section className={styles.sectionImg}>
-          <img className={styles.image} src="/header.png" alt=""/>
+          <img className={styles.image} src="/header.png" alt="" />
           <h3>Lorem Ipsum dolor sit amet</h3>
         </section>
 
@@ -55,26 +53,25 @@ export default function Home() {
           <div className={styles.background}></div>
           <h1>Vos préférés</h1>
           <div className={styles.favoriteWineContainer}>
-          {wines.map((wine) => 
-            <Card key={wine.id} wine={wine}/>
-          )}
+            {wines.map(wine => (
+              <Card key={wine.id} wine={wine} />
+            ))}
           </div>
           <button>Voir tous les vins</button>
         </section>
 
         <section className={styles.sectionHome}>
-            <h1>High Quality Wine for you and your beloved ones</h1>
-            <div className={styles.images}>
-              <img src="/section/1.jpg"/>
-              <img src="/section/2.jpg"/>
-              <img src="/section/3.jpg"/>
-            </div>
-            <p>
-             &quot;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod temporincididunt ut labore et dolore magna aliqua.&quot;
-            </p>
+          <h1>High Quality Wine for you and your beloved ones</h1>
+          <div className={styles.images}>
+            <img src="/section/1.jpg" />
+            <img src="/section/2.jpg" />
+            <img src="/section/3.jpg" />
+          </div>
+          <p>
+            &quot;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+            do eiusmod temporincididunt ut labore et dolore magna aliqua.&quot;
+          </p>
         </section>
-
-
 
         <section className={styles.sectionInformations}>
           <img src="/maps.png" />
@@ -90,22 +87,13 @@ export default function Home() {
               <p>Tel: (+33) 04.60.00.80.00</p>
               <p>Email: fr.order@goodwhineshop.com</p>
             </div>
-
           </div>
         </section>
       </div>
-
-
-
-
     </>
-  )
+  );
 }
 
 Home.getLayout = function getLayout(page) {
-  return (
-    <Layout>
-      {page}
-    </Layout>
-  )
-}
+  return <Layout>{page}</Layout>;
+};

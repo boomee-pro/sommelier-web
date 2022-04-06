@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "format": "npx prettier --ignore-path .gitignore --write --plugin-search-dir=. ."
   },
   "dependencies": {
     "@prisma/client": "^3.12.0",

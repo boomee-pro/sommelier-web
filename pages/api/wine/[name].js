@@ -6,14 +6,14 @@ export default async function handle(req, res) {
   switch (req.method) {
     case "GET":
       wine = await prisma.wines.findUnique({
-        where: { name: name },
+        where: { name: name }
       });
       res.json(wine);
       break;
 
     case "DELETE":
       wine = await prisma.wines.delete({
-        where: { name: name },
+        where: { name: name }
       });
       res.json(wine);
       break;

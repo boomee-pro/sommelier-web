@@ -10,8 +10,8 @@ export default async function handle(req, res) {
     case "POST":
       const user = await prisma.users.findUnique({
         where: {
-          email: email,
-        },
+          email: email
+        }
       });
 
       if (!user) {
@@ -26,7 +26,7 @@ export default async function handle(req, res) {
       }
 
       const token = jwt.sign({ username: user.email }, SECRET, {
-        expiresIn: "10d",
+        expiresIn: "10d"
       });
       res.json({ token });
       break;
