@@ -52,7 +52,7 @@ export default function Home() {
           <h3>Lorem Ipsum dolor sit amet</h3>
         </section>
 
-        <section className={styles.favoriteWine}>
+        <section className={styles.sectionFavorite}>
           <div className={styles.background}></div>
           <h1>Vos préférés</h1>
           <div className={styles.favoriteWineContainer}>
@@ -61,6 +61,10 @@ export default function Home() {
           )}
           </div>
           <button>Voir tous les vins</button>
+        </section>
+
+        <section>
+
         </section>
 
       </div>
