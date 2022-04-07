@@ -1,25 +1,20 @@
 const { useAuth } = require("contexts/AuthContext");
 const { useRouter } = require("next/router");
 
-const withAuth = (Component) => {
-  const Auth = (props) => {
+const withoutAuth = (Component) => {
+  const WAuth = (props) => {
 
     const {connected, isLoading} = useAuth();
     const router = useRouter();
 
     if(isLoading) return "Loading...";
-    if(!connected) {
-      router.push('/sign-in'); 
+    if(connected) {
+      router.push('/'); 
       return;
     } 
     return <Component {...props} />;
   }
-
-  if (Component.getInitialProps) {
-    Auth.getInitialProps = Component.getInitialProps;
-  }
-
-  return Auth;
+  return WAuth;
 }
 
-export default withAuth;
+export default withoutAuth;

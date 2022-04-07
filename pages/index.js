@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import Link from 'next/link';
 
 import styles from 'styles/home.module.scss'
 
@@ -61,7 +62,9 @@ const Home = () => {
             <Card key={wine.id} wine={wine}/>
           )}
           </div>
-          <button>Voir tous les vins</button>
+          <Link href="/wines" passHref>
+            <button>Voir tous les vins</button>
+          </Link>
         </section>
 
         <section className={styles.sectionHome}>

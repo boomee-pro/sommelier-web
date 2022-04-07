@@ -12,6 +12,7 @@ import { BiMenu, BiSearch } from "react-icons/bi";
 const Navbar = () => {
 
   const {user} = useAuth();
+  console.log(user);
   const router = useRouter();
 
   return (
@@ -30,7 +31,11 @@ const Navbar = () => {
           <li className={classNames(router.pathname === "/shop" && styles.activeLink)}>Notre boutique</li>
           <li className={classNames(router.pathname === "/story" && styles.activeLink)}>Notre histoire</li>
           <li className={styles.spacer}></li>
-          <li><Link href="/sign-in">Se connecter</Link></li>
+          <li>
+            {(user.connected && user.details.length !== 0) ? 
+            <Link href="/profile">{user.details.surname}</Link> : 
+            <Link href="/sign-in">Se connecter</Link>}
+          </li>
           <li className={styles.logoSvg}><BiSearch size={24} /></li>
         </ul>
       </div>

@@ -11,6 +11,7 @@ import "react-toastify/dist/ReactToastify.css";
 import createToastMessage from "utils/ToastMessage";
 
 import {useAuth} from 'contexts/AuthContext';
+import withoutAuth from "utils/withoutAuth";
 
 // ICONS
 import { BiEnvelope, BiLockAlt } from "react-icons/bi";
@@ -37,10 +38,7 @@ const SignIn = () => {
     setLoading(true);
     await sleep(500);
     login(data).then(({type, message}) => {
-      if(type === "success") {
-        createToastMessage(type, message);
-        router.push('/');
-      }
+      if(type === "success") createToastMessage(type, message);
       else {
         console.log(message);
         setErrors({...message});
@@ -106,4 +104,4 @@ const SignIn = () => {
   )
 }
 
-export default SignIn;
+export default withoutAuth(SignIn);

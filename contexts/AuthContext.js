@@ -24,10 +24,7 @@ export function AuthProvider({ children }) {
     .then((res) => {
       setUser({
         connected: true,
-        details: {
-          username: "toto",
-          email: "toto"
-        }
+        details: res.data.user
       });
       setAuthorizationToken(res.data.token);
       return {type: "success", message: res.data.message}
@@ -56,12 +53,16 @@ export function AuthProvider({ children }) {
       const decodedToken = jwtDecode(token);
       if(decodedToken.exp * 1000 < Date.now()) logout();
       else {
-        setUser({
-          connected: true,
-          details: {
-            prenom: "SylvainReconnect",
-            email: "Test",
-          }
+        axios.defaults.headers.common['Authorization'] = token;
+        await axios.get("reconnect")
+        .then((res) => {
+          setUser({
+            connected: true,
+            details: res.data.user,
+          })
+        }).catch((err) => {
+          console.log(err);
+          logout();
         })
         setLoading(false);
       }
