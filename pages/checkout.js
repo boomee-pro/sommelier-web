@@ -6,7 +6,7 @@ import WineDetails from "components/Checkout/wineDetails";
 
 export default function Checkout() {
 
-  const {cart} = useCart();
+  const {cart, getTotalPrice} = useCart();
 
   if(cart.length === 0) return <div className={styles.container}><p>Vous n&apos;avez pas de panier</p></div>
 
@@ -34,7 +34,10 @@ export default function Checkout() {
           </div>
 
           <div className={styles.content}>
-
+            <div className={styles.data}>
+              <h3>Total<span>{getTotalPrice()} €</span></h3>
+              <button>Procéder au paiement</button>
+            </div>
           </div>
         </div>
 

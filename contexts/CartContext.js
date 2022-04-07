@@ -32,6 +32,14 @@ export function CartProvider( {children } ) {
         setCart([...cart])
     }
 
+    function getItemsCount() {
+        return cart.reduce((acc, item) => acc+item.quantity, 0);
+    }
+    
+    function getTotalPrice() {
+        return cart.reduce((acc, item) => acc+(item.quantity*item.price), 0);
+    }
+
     useEffect(() => {
         const fetchCart = () => {
             let cartData = localStorage.getItem("cart");
@@ -53,6 +61,8 @@ export function CartProvider( {children } ) {
         addToCart,
         incrementQuantity,
         decrementQuantity,
+        getItemsCount,
+        getTotalPrice
     }
 
     return (

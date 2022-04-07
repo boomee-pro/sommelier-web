@@ -5,7 +5,7 @@ import Layout from 'components/Layout/layout';
 
 
 export async function getStaticProps() {
-  const res = await fetch(`http://localhost:3000/api/wines`)
+  const res = await fetch(`http://localhost:3030/api/wines`)
   const wines = await res.json();
 
   if (!res.ok) {
