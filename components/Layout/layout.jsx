@@ -1,8 +1,9 @@
 import Navbar from './navbar';
-import Cart from '../Cart/cart';
 import Footer from './footer';
 
-export default function Layout ({noCartIcon, children}) {
+import Cart from '../Cart/cart';
+
+const Layout = ({noCartIcon, children}) => {
 
   return (
     <>
@@ -15,3 +16,5 @@ export default function Layout ({noCartIcon, children}) {
   )
 
 }
+
+export default Layout;

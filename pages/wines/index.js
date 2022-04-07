@@ -1,6 +1,8 @@
 import Head from "next/head"
+
+import styles from "styles/wines.module.scss";
+
 import Card from "components/card"
-import styles from "styles/wines.module.scss"
 import Layout from 'components/Layout/layout';
 
 
@@ -16,7 +18,7 @@ export async function getStaticProps() {
 }
 
 
-export default function Wines({ wines }) {
+const Wines = ({ wines }) => {
   return (
     <div>
       <Head>
@@ -25,12 +27,10 @@ export default function Wines({ wines }) {
       </Head>
 
       <div className={styles.container}>
-      {wines.map((wine) => 
-        <Card key={wine.id} wine={wine}/>
-      )}
+        {wines.map((wine) => 
+          <Card key={wine.id} wine={wine}/>
+        )}
       </div>
-
-
     </div>
   )
 }
@@ -42,3 +42,5 @@ Wines.getLayout = function getLayout(page) {
     </Layout>
   )
 }
+
+export default Wines;

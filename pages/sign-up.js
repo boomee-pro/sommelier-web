@@ -1,9 +1,10 @@
-import Head from "next/head"
-import styles from 'styles/auth.module.scss';
+import Head from "next/head";
 import Image from 'next/image';
+
+import styles from 'styles/auth.module.scss';
 import Wine from 'public/wine2.png';
 
-export default function SignUp() {
+const SignUp = () => {
 
   return (
     
@@ -70,3 +71,5 @@ export default function SignUp() {
     </section>
   )
 }
+
+export default SignUp;

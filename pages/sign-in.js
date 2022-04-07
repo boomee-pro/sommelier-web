@@ -1,24 +1,22 @@
-import { useState } from "react";
-import Head from "next/head"
-import styles from 'styles/auth.module.scss';
+import Head from "next/head";
 import Image from 'next/image';
 import {useRouter} from "next/router";
+import { useState } from "react";
 
-
+import styles from 'styles/auth.module.scss';
 import classNames from "classnames";
-
-
-
-import {useAuth} from 'contexts/AuthContext';
-
-import { BiEnvelope, BiLockAlt } from "react-icons/bi";
+import Wine from 'public/wine2.png';
 
 import "react-toastify/dist/ReactToastify.css";
 import createToastMessage from "utils/ToastMessage";
 
-import Wine from 'public/wine2.png';
+import {useAuth} from 'contexts/AuthContext';
 
-export default function SignIn() {
+// ICONS
+import { BiEnvelope, BiLockAlt } from "react-icons/bi";
+
+
+const SignIn = () => {
 
   const {login} = useAuth();
   const router = useRouter();
@@ -107,3 +105,5 @@ export default function SignIn() {
     </>
   )
 }
+
+export default SignIn;

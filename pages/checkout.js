@@ -1,10 +1,12 @@
-import Layout from "components/Layout/layout";
-import { useCart } from "contexts/CartContext";
 import styles from "styles/checkout.module.scss";
 
+import Layout from "components/Layout/layout";
 import WineDetails from "components/Checkout/wineDetails";
 
-export default function Checkout() {
+import { useCart } from "contexts/CartContext";
+
+
+const Checkout = () => {
 
   const {cart, getTotalPrice} = useCart();
 
@@ -47,10 +49,11 @@ export default function Checkout() {
 }
 
 Checkout.getLayout = function getLayout(page) {
-    return (
-      <Layout noCartIcon={true}>
-        {page}
-      </Layout>
-    )
-  }
-  
+  return (
+    <Layout noCartIcon={true}>
+      {page}
+    </Layout>
+  )
+}
+ 
+export default Checkout;

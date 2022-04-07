@@ -1,10 +1,12 @@
-import Head from 'next/head'
-import Layout from 'components/Layout/layout'
+import Head from 'next/head';
+
 import styles from 'styles/home.module.scss'
 
+
+import Layout from 'components/Layout/layout';
 import Card from 'components/card';
 
-export default function Home() {
+const Home = () => {
 
   const wines = [
     {
@@ -90,7 +92,6 @@ export default function Home() {
               <p>Tel: (+33) 04.60.00.80.00</p>
               <p>Email: fr.order@goodwhineshop.com</p>
             </div>
-
           </div>
         </section>
       </div>
@@ -109,3 +110,5 @@ Home.getLayout = function getLayout(page) {
     </Layout>
   )
 }
+
+export default Home;
