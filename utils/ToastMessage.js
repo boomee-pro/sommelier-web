@@ -1,7 +1,6 @@
 import { Slide, toast } from "react-toastify";
 
 export default function createToastMessage(type, message) {
-
   toast(message, {
     type: type,
     theme: "colored",
@@ -10,6 +9,5 @@ export default function createToastMessage(type, message) {
     progress: undefined,
     transition: Slide,
     position: "bottom-right"
-  })
-
+  });
 }

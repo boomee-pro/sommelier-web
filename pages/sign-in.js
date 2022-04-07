@@ -1,62 +1,57 @@
 import { useState } from "react";
-import Head from "next/head"
-import styles from 'styles/auth.module.scss';
-import Image from 'next/image';
-import {useRouter} from "next/router";
-
+import Head from "next/head";
+import styles from "styles/auth.module.scss";
+import Image from "next/image";
+import { useRouter } from "next/router";
 
 import classNames from "classnames";
 
-
-
-import {useAuth} from 'contexts/AuthContext';
+import { useAuth } from "contexts/AuthContext";
 
 import { BiEnvelope, BiLockAlt } from "react-icons/bi";
 
 import "react-toastify/dist/ReactToastify.css";
 import createToastMessage from "utils/ToastMessage";
 
-import Wine from 'public/wine2.png';
+import Wine from "public/wine2.png";
 
 export default function SignIn() {
-
-  const {login} = useAuth();
+  const { login } = useAuth();
   const router = useRouter();
 
   const [loading, setLoading] = useState(false);
-  const [errors, setErrors] = useState({}); 
+  const [errors, setErrors] = useState({});
   const [data, setData] = useState({
     email: "",
-    password: "",
-  })
+    password: ""
+  });
 
-  const sleep = (milliseconds) => {
-    return new Promise(resolve => setTimeout(resolve, milliseconds))
-  }
+  const sleep = milliseconds => {
+    return new Promise(resolve => setTimeout(resolve, milliseconds));
+  };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async e => {
     e.preventDefault();
     setLoading(true);
     await sleep(500);
-    login(data).then(({type, message}) => {
-      if(type === "success") {
+    login(data).then(({ type, message }) => {
+      if (type === "success") {
         createToastMessage(type, message);
-        router.push('/');
-      }
-      else {
+        router.push("/");
+      } else {
         console.log(message);
-        setErrors({...message});
+        setErrors({ ...message });
         setLoading(false);
       }
-    })
-  }
+    });
+  };
 
-  const handleChange = (e) => {
+  const handleChange = e => {
     setData({
-        ...data,
-        [e.target.name]: e.target.value
-    })
-  }
+      ...data,
+      [e.target.name]: e.target.value
+    });
+  };
 
   return (
     <>
@@ -65,45 +60,56 @@ export default function SignIn() {
         <meta name="description" content="Page de connexion" />
       </Head>
 
-      <div className={styles.container}>
-
-        <div className={styles.image}>
-          <Image src={Wine} alt="" layout="fill"/>
+      <div className={styles.auth__container}>
+        <div className={styles.auth__banner}>
+          <Image src={Wine} alt="" layout="fill" />
         </div>
-        
-        <div className={styles.dataContainer}>
 
-          <div className={styles.data}>
+        <div className={styles.form__container}>
+          <div className={styles.form}>
             <h2>Connexion</h2>
 
             <form noValidate onSubmit={handleSubmit}>
-
-              <div className={styles.inputGroup}>
+              <div className={styles.form__input}>
                 <BiEnvelope size={24} />
-                <input type="text" name="email" className={classNames(errors.email && styles.error)} onChange={handleChange} placeholder='Adresse e-mail'/>
+                <input
+                  type="text"
+                  name="email"
+                  className={classNames(errors.email && styles.error)}
+                  onChange={handleChange}
+                  placeholder="Adresse e-mail"
+                />
                 <small>{errors.email}</small>
               </div>
 
-              <div className={styles.inputGroup}>
+              <div className={styles.form__input}>
                 <BiLockAlt size={24} />
-                <input type="password" name="password" className={classNames(errors.password && styles.error)} onChange={handleChange} placeholder='Mot de passe' />
+                <input
+                  type="password"
+                  name="password"
+                  className={classNames(errors.password && styles.error)}
+                  onChange={handleChange}
+                  placeholder="Mot de passe"
+                />
                 <small>{errors.password}</small>
               </div>
 
-              <a className={styles.forgotPass} href="forgot-password">Mot de passe oublié ?</a>
+              <a className={styles.form__forgotten} href="forgot-password">
+                Mot de passe oublié ?
+              </a>
 
-              <button type="submit" disabled={loading}>{loading ? "Chargement..." : "Se connecter"}</button>
-              
-              <p>Vous n&apos;avez pas encore de compte ? <a href="sign-up">S&apos;inscrire</a></p>
+              <button type="submit" disabled={loading}>
+                {loading ? "Chargement..." : "Se connecter"}
+              </button>
 
+              <p>
+                Vous n&apos;avez pas encore de compte ?{" "}
+                <a href="sign-up">S&apos;inscrire</a>
+              </p>
             </form>
           </div>
-
-
         </div>
-
       </div>
-
     </>
-  )
+  );
 }

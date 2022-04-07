@@ -1,9 +1,8 @@
-import Navbar from './navbar';
-import Cart from '../Cart/cart';
-import Footer from './footer';
+import Navbar from "./navbar";
+import Cart from "../Cart/cart";
+import Footer from "./footer";
 
-export default function Layout ({noCartIcon, children}) {
-
+export default function Layout({ noCartIcon, children }) {
   return (
     <>
       <div className="background"></div>
@@ -12,6 +11,5 @@ export default function Layout ({noCartIcon, children}) {
       <main>{children}</main>
       <Footer />
     </>
-  )
-
+  );
 }

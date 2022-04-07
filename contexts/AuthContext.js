@@ -9,7 +9,6 @@ export function useAuth() {
 }
 
 export function AuthProvider({ children }) {
-
   axios.defaults.baseURL = "http://localhost:3030/auth";
 
   const [isLoading, setLoading] = useState(true);
@@ -20,21 +19,22 @@ export function AuthProvider({ children }) {
   });
 
   function login(body) {
-    return axios.post("sign-in", body)
-    .then((res) => {
-      setUser({
-        connected: true,
-        details: {
-          username: "toto",
-          email: "toto"
-        }
+    return axios
+      .post("sign-in", body)
+      .then(res => {
+        setUser({
+          connected: true,
+          details: {
+            username: "toto",
+            email: "toto"
+          }
+        });
+        setAuthorizationToken(res.data.token);
+        return { type: "success", message: res.data.message };
+      })
+      .catch(err => {
+        return { type: "error", message: err.response.data };
       });
-      setAuthorizationToken(res.data.token);
-      return {type: "success", message: res.data.message}
-    })
-    .catch((err) => {
-      return {type: "error", message: err.response.data};
-    })
   }
 
   function logout() {
@@ -42,30 +42,30 @@ export function AuthProvider({ children }) {
       connected: false,
       details: {}
     });
-    localStorage.removeItem('token');
+    localStorage.removeItem("token");
   }
 
   useEffect(() => {
     const fetchUser = async () => {
       let token = localStorage.getItem("token");
-      if(!token) {
+      if (!token) {
         setLoading(false);
         return;
       }
 
       const decodedToken = jwtDecode(token);
-      if(decodedToken.exp * 1000 < Date.now()) logout();
+      if (decodedToken.exp * 1000 < Date.now()) logout();
       else {
         setUser({
           connected: true,
           details: {
             prenom: "SylvainReconnect",
-            email: "Test",
+            email: "Test"
           }
-        })
+        });
         setLoading(false);
       }
-    }
+    };
 
     fetchUser();
   }, []);
@@ -76,16 +76,12 @@ export function AuthProvider({ children }) {
     logout,
     connected: user.connected,
     isLoading
-  }
+  };
 
-  return (
-    <AuthContext.Provider value={value}>
-      {children}
-    </AuthContext.Provider>
-  )
+  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 }
 
-const setAuthorizationToken = (token) => {
-  localStorage.setItem('token', `Bearer ${token}`);
-  axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-}
+const setAuthorizationToken = token => {
+  localStorage.setItem("token", `Bearer ${token}`);
+  axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+};

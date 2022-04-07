@@ -1,149 +1,156 @@
-.container {
-    width: 80%;
-    margin: 150px auto;
+$shadow: 0px 4px 4px hsla(0, 0%, 0%, 0.25);
+$grid: 2.5fr 1fr 1fr 1fr;
+$gold: var(--gold-main);
+$red: var(--red-main);
+$blue: var(--blue-dark);
+$grey: hsl(0, 0%, 60%);
 
-    h2 {
-        color: var(--gold-main);
-        font-size: 26px;
-        font-weight: 400;
-    }
+.checkout__container {
+  width: 80%;
+  margin: 150px auto;
 
-    .checkout {
-        display: grid;
-        grid-template-columns: 2.5fr 1fr;
-        gap: 40px;
+  h2 {
+    color: $gold;
+    font-size: 26px;
+    font-weight: 400;
+  }
 
-        .details {
-            .title {
-                display: grid;
-                grid-template-columns: 2.5fr 1fr 1fr 1fr;
-                background-color: var(--red-main);
-                box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-                border-radius: 10px;
-                padding-left: 20px;
-                padding-right: 20px;
-                p {
-                    margin: 0;
-                    color: white;
-                }
-                p:not(:first-child) {
-                    text-align: center;
-                }
-                p:first-child {
-                    padding-left: 40px;
-                }
-            }
-        }
-
-        .summary {
-            .title {
-                background-color: var(--red-main);
-                box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-                border-radius: 10px;
-                text-align: center;
-                color: white;
-            }
-
-            .content {
-                .data {
-                    width: 80%;
-                    margin: 0 auto 30px;
-                    h3 {
-                        color: var(--blue-dark);
-                        span {
-                            float: right;
-                        }
-                    }
-                    button {
-                        background-color: var(--red-main);
-                        width: 100%;
-                        color: white;
-                        cursor: pointer;
-                        font-weight: 400;
-                        font-size: 20px;
-                        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-                        border-radius: 30px;
-                    }
-                }
-
-            }
-        }
-    }
-}
-
-.content {
-    background: white;
-    border: 2px solid rgba(187, 125, 51, 0.1);
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    border-radius: 10px;
-    margin-top: 20px;
-}
-
-.wineCheckoutProduct {
-    width: 100%;
+  .checkout__subcontainer {
     display: grid;
-    padding: 20px;
-    position: relative;
-    grid-template-columns: 2.5fr 1fr 1fr 1fr;
-    .productInfo {
-        display: flex;
-        align-items: center;
-        img {
-            max-width: 110px;
-        }
+    grid-template-columns: 2.5fr 1fr;
+    gap: 40px;
+
+    .checkout__details {
+      .details__title {
+        display: grid;
+        grid-template-columns: $grid;
+        background-color: $red;
+        box-shadow: $shadow;
+        border-radius: 10px;
+        padding-left: 20px;
+        padding-right: 20px;
         p {
-            color: var(--blue-dark);
-            font-size: 17px;
+          margin: 0;
+          color: white;
+        }
+        p:not(:first-child) {
+          text-align: center;
         }
         p:first-child {
-            font-style: italic;
+          padding-left: 40px;
         }
+      }
     }
 
-    p {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: var(--gold-main);
-        font-weight: 400;
-        font-size: 20px;
-    }
+    .details__summary {
+      .summary__title {
+        background-color: $red;
+        box-shadow: $shadow;
+        border-radius: 10px;
+        text-align: center;
+        color: white;
+      }
 
-    .quantity {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        .quantityStyle {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50px;
-            border: 1px solid #9A9A9A;
-            p {
-                padding-left: 20px;
-                padding-right: 20px;
+      .checkout__content {
+        .content__data {
+          width: 80%;
+          margin: 0 auto 30px;
+          h3 {
+            color: $blue;
+            span {
+              float: right;
             }
-            p, button {
-                margin: 0;
-                color: #9A9A9A;
-            }
-            button {
-                font-size: 25px;
-                width: 25px;
-                padding: 0 5px 0 5px;
-                background-color: transparent;
-            }
+          }
+          button {
+            background-color: $red;
+            width: 100%;
+            color: white;
+            cursor: pointer;
+            font-weight: 400;
+            font-size: 20px;
+            box-shadow: $shadow;
+            border-radius: 30px;
+          }
         }
+      }
     }
+  }
 }
 
-.wineCheckoutProduct:not(:last-child):after {
-    content: '';
-    position: absolute;
-    width: 90%;
-    height: 1px;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: var(--gold-main);
+.checkout__content {
+  background: white;
+  border: 2px solid hsla(33, 57%, 47%, 0.1);
+  box-shadow: 0px 4px 4px hsla(0, 0%, 0%, 0.25);
+  border-radius: 10px;
+  margin-top: 20px;
+}
+
+.checkout__card {
+  width: 100%;
+  display: grid;
+  padding: 20px;
+  position: relative;
+  grid-template-columns: $grid;
+  .card__details {
+    display: flex;
+    align-items: center;
+    img {
+      max-width: 110px;
+    }
+    p {
+      color: $blue;
+      font-size: 17px;
+    }
+    p:first-child {
+      font-style: italic;
+    }
+  }
+
+  p {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: $gold;
+    font-weight: 400;
+    font-size: 20px;
+  }
+
+  .card__quantity {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .quantity__style {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50px;
+      border: 1px solid $grey;
+      p {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+      p,
+      button {
+        margin: 0;
+        color: $grey;
+      }
+      button {
+        font-size: 25px;
+        width: 25px;
+        padding: 0 5px 0 5px;
+        background-color: transparent;
+      }
+    }
+  }
+}
+
+.checkout__card:not(:last-child):after {
+  content: "";
+  position: absolute;
+  width: 90%;
+  height: 1px;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: $gold;
 }
