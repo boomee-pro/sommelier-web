@@ -3,6 +3,7 @@ import classnames from "classnames";
 import styles from 'styles/layout.module.scss';
 import { useCart } from "contexts/CartContext";
 import CartWine from "./cartWine";
+import Link from "next/link";
 
 export default function Cart() {
   
@@ -36,7 +37,7 @@ export default function Cart() {
           {cart.map((item) => <CartWine wine={item} key={item.id} />)}
         </div>
         <h2>Prix total<span>{getTotalPrice()} €</span></h2>
-        <button>Commander</button>
+        <button><Link href="/checkout">Commander</Link></button>
       </div>
 
       

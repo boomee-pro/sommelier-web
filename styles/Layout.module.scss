@@ -110,10 +110,13 @@
 
     button {
         background-color: var(--red-main);
-        color: white;
         font-size: 20px;
         padding: 10px 20px;
         border-radius: 10px;
+        a {
+            color: white;
+            text-decoration: none;
+        }
     }
 
     * {

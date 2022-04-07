@@ -1,0 +1,134 @@
+.container {
+    width: 80%;
+    margin: 150px auto;
+
+    h2 {
+        color: var(--gold-main);
+        font-size: 26px;
+        font-weight: 400;
+    }
+
+    .checkout {
+        display: grid;
+        grid-template-columns: 2.5fr 1fr;
+        gap: 40px;
+
+        .details {
+            .title {
+                display: grid;
+                grid-template-columns: 2.5fr 1fr 1fr 1fr;
+                background-color: var(--red-main);
+                box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+                border-radius: 10px;
+                padding-left: 20px;
+                padding-right: 20px;
+                p {
+                    margin: 0;
+                    color: white;
+                }
+                p:not(:first-child) {
+                    text-align: center;
+                }
+                p:first-child {
+                    padding-left: 40px;
+                }
+            }
+
+            .content {
+                background: white;
+                border: 2px solid rgba(187, 125, 51, 0.1);
+                box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+                border-radius: 10px;
+                margin-top: 20px;
+            }
+        }
+
+        .summary {
+            border: 1px solid blue;
+            .title {
+                background-color: var(--red-main);
+                box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+                border-radius: 10px;
+                text-align: center;
+                color: white;
+            }
+        }
+    }
+}
+
+.content {
+    background: white;
+    border: 2px solid rgba(187, 125, 51, 0.1);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    margin-top: 20px;
+}
+
+.wineCheckoutProduct {
+    width: 100%;
+    display: grid;
+    padding: 20px;
+    position: relative;
+    grid-template-columns: 2.5fr 1fr 1fr 1fr;
+    .productInfo {
+        display: flex;
+        align-items: center;
+        img {
+            max-width: 110px;
+        }
+        p {
+            color: var(--blue-dark);
+            font-size: 17px;
+        }
+        p:first-child {
+            font-style: italic;
+        }
+    }
+
+    p {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--gold-main);
+        font-weight: 400;
+        font-size: 20px;
+    }
+
+    .quantity {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        .quantityStyle {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50px;
+            border: 1px solid #9A9A9A;
+            p {
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+            p, button {
+                margin: 0;
+                color: #9A9A9A;
+            }
+            button {
+                font-size: 25px;
+                width: 25px;
+                padding: 0 5px 0 5px;
+                background-color: transparent;
+            }
+        }
+    }
+}
+
+.wineCheckoutProduct:not(:last-child):after {
+    content: '';
+    position: absolute;
+    width: 90%;
+    height: 1px;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--gold-main);
+}
