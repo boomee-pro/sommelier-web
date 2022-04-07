@@ -61,7 +61,6 @@ export function AuthProvider({ children }) {
             details: res.data.user,
           })
         }).catch((err) => {
-          console.log(err);
           logout();
         })
         setLoading(false);

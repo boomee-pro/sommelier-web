@@ -1,0 +1,40 @@
+.wine__container {
+  width: 80%;
+  margin: 150px auto;
+  border: 1px solid red;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+
+  .image__container {
+    text-align: center;
+    .image {
+      img {
+        width: 80%;
+      }
+    }
+  }
+
+  .wine__details {
+    padding: 0 50px 0 50px;
+    border: 1px solid blue;
+    p:first-child {
+      color: var(--blue-dark);
+      font-style: italic;
+      font-size: 30px;
+      margin: 0;
+    }
+
+    h1 {
+      border: 1px solid blue;
+      span {
+        float: right;
+        font-size: 20px;
+        font-weight: 300;
+        color: #00880E;
+      }
+
+      border-bottom: 2px solid var(--gold-main);
+    }
+  }
+
+}

@@ -40,7 +40,6 @@ const SignIn = () => {
     login(data).then(({type, message}) => {
       if(type === "success") createToastMessage(type, message);
       else {
-        console.log(message);
         setErrors({...message});
         setLoading(false);
       }

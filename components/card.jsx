@@ -29,7 +29,7 @@ const Card = ({ wine }) => {
       
       <div className={styles.buttons}>
         <button onClick={() => addToCart(wine)}>Ajouter</button>
-        <a href={`/wine/${wine.id}`}>
+        <a href={`/wines/${wine.id}`}>
           <BiShow size={24} />
         </a>
       </div>

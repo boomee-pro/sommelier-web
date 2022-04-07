@@ -12,7 +12,6 @@ import { BiMenu, BiSearch } from "react-icons/bi";
 const Navbar = () => {
 
   const {user} = useAuth();
-  console.log(user);
   const router = useRouter();
 
   return (
