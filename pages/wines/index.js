@@ -26,7 +26,7 @@ const Wines = ({ wines }) => {
         <meta name="description" content="Liste des vins" />
       </Head>
 
-      <div className={styles.container}>
+      <div className={styles.wines__container}>
         {wines.map((wine) => 
           <Card key={wine.id} wine={wine}/>
         )}

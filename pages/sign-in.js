@@ -60,32 +60,32 @@ const SignIn = () => {
         <meta name="description" content="Page de connexion" />
       </Head>
 
-      <div className={styles.container}>
+      <div className={styles.auth__container}>
 
-        <div className={styles.image}>
+        <div className={styles.auth__banner}>
           <Image src={Wine} alt="" layout="fill"/>
         </div>
         
-        <div className={styles.dataContainer}>
+        <div className={styles.form__container}>
 
-          <div className={styles.data}>
+          <div className={styles.form}>
             <h2>Connexion</h2>
 
             <form noValidate onSubmit={handleSubmit}>
 
-              <div className={styles.inputGroup}>
+              <div className={styles.form__input}>
                 <BiEnvelope size={24} />
                 <input type="text" name="email" className={classNames(errors.email && styles.error)} onChange={handleChange} placeholder='Adresse e-mail'/>
                 <small>{errors.email}</small>
               </div>
 
-              <div className={styles.inputGroup}>
+              <div className={styles.form__input}>
                 <BiLockAlt size={24} />
                 <input type="password" name="password" className={classNames(errors.password && styles.error)} onChange={handleChange} placeholder='Mot de passe' />
                 <small>{errors.password}</small>
               </div>
 
-              <a className={styles.forgotPass} href="forgot-password">Mot de passe oublié ?</a>
+              <a className={styles.form__forgotten} href="forgot-password">Mot de passe oublié ?</a>
 
               <button type="submit" disabled={loading}>{loading ? "Chargement..." : "Se connecter"}</button>
               

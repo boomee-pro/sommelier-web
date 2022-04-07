@@ -11,15 +11,15 @@ const Card = ({ wine }) => {
   const {addToCart} = useCart();
 
   return (
-    <div className={styles.card}>
-      <div className={styles.image}>
+    <div className={styles.card__container}>
+      <div className={styles.card__image}>
 
-        <div className={styles.hideOverflow}>
-          <div className={styles.background}></div>
+        <div className={styles.card__overflow}>
+          <div className={styles.card__background}></div>
         </div>
 
-        <img className={styles.wineImg} src={wine.img} alt="" />
-        <img className={styles.flag} src={wine.flag} alt="" />
+        <img className={styles.wine__img} src={wine.img} alt="" />
+        <img className={styles.wine__flag} src={wine.flag} alt="" />
 
       </div>
 
@@ -27,7 +27,7 @@ const Card = ({ wine }) => {
       <p>{wine.name}</p>
       <h3>{wine.price} €</h3>
       
-      <div className={styles.buttons}>
+      <div className={styles.card__buttons}>
         <button onClick={() => addToCart(wine)}>Ajouter</button>
         <a href={`/wines/${wine.id}`}>
           <BiShow size={24} />

@@ -1,4 +1,4 @@
-.container {
+.wines__container {
   position: relative;
   width: 80%;
   display: grid;
@@ -8,19 +8,19 @@
 }
 
 @media (max-width: 768px) {
-  .container {
+  .wines__container {
     display: block;
   }
 }
 
 @media (max-width: 1333px) {
-  .container {
+  .wines__container {
     grid-template-columns: repeat(3, 1fr);
   }
 }
 
 @media (max-width: 986px) {
-  .container {
+  .wines__container {
     grid-template-columns: repeat(2, 1fr);
   }
 }

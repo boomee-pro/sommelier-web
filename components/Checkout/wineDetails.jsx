@@ -6,18 +6,18 @@ const WineDetails = ({wine}) => {
 	const {incrementQuantity, decrementQuantity} = useCart();
     
 	return (
-    <div className={styles.wineCheckoutProduct}>
+    <div className={styles.checkout__card}>
 
-			<div className={styles.productInfo}>
+			<div className={styles.card__details}>
 				<img src={wine.img} alt="" />
-				<div className={styles.text}>
+				<div>
 					<p>{wine.domain}</p>
 					<p>{wine.name}</p>
 				</div>
 			</div>
 
-			<div className={styles.quantity}>
-				<div className={styles.quantityStyle}>
+			<div className={styles.card__quantity}>
+				<div className={styles.quantity__style}>
 					<button onClick={() => decrementQuantity(wine.id)}>-</button>
 					<p>{wine.quantity}</p>
 					<button onClick={() => incrementQuantity(wine.id)}>+</button>

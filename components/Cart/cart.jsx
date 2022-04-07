@@ -18,15 +18,15 @@ const Cart = () => {
 
   return (
     <>
-      <div className={styles.cart} onClick={() => setOpen(true)}>
+      <div className={styles.cart__float} onClick={() => setOpen(true)}>
         <BiCart size={24} />
-        <span className={styles.cartNumber}>{getItemsCount()}</span>
+        <span className={styles.float__amount}>{getItemsCount()}</span>
       </div>
 
-      <div className={classnames(styles.cartSlide, open && styles.active)}>
-        <div className={styles.background}></div>
+      <div className={classnames(styles.cart__slider, open && styles.active)}>
+        <div className={styles.slider__background} />
 
-        <div className={styles.top}>
+        <div className={styles.slider__header}>
           <div onClick={() => setOpen(false)}>
             <BiArrowBack size={24} />
           </div>
@@ -37,7 +37,7 @@ const Cart = () => {
 
         <h3>Votre commande</h3>
 
-        <div className={styles.cartContent}>
+        <div className={styles.slider__content}>
           {cart.map((item) => <CartWine wine={item} key={item.id} />)}
         </div>
 

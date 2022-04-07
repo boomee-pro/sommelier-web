@@ -18,25 +18,25 @@ const SignUp = () => {
         <title>Inscription</title>
         <meta name="description" content="Page de d'inscription" />
       </Head>
-      <div className={styles.container}>
+      <div className={styles.auth__container}>
 
-        <div className={styles.image}>
+        <div className={styles.auth__banner}>
           <Image src={Wine} alt="" layout="fill"/>
         </div>
         
-        <div className={styles.dataContainer}>
+        <div className={styles.form__container}>
 
-          <div className={styles.data}>
+          <div className={styles.form__container}>
             <h2>Inscription</h2>
 
             <div>
-              <div className={styles.splitGroup}>
-                <div className={styles.inputGroup}>
+              <div className={styles.split__container}>
+                <div className={styles.form__input}>
                   <BiUser size={24} />
                   <input type="text" placeholder='Prénom*'/>
                 </div>
 
-                <div className={styles.inputGroup}>
+                <div className={styles.form__input}>
                   <BiUser size={24} />
                   <input type="text" placeholder='Nom*'/>
                 </div>
@@ -44,18 +44,18 @@ const SignUp = () => {
 
 
 
-              <div className={styles.inputGroup}>
+              <div className={styles.form__input}>
                 <BiEnvelope size={24}/>
                 <input type="text" placeholder='Adresse e-mail*'/>
               </div>
 
 
-              <div className={styles.inputGroup}>
+              <div className={styles.form__input}>
                 <BiLockAlt size={24} />
                 <input type="password" placeholder='Mot de passe*' />
               </div>
 
-              <div className={styles.inputGroup}>
+              <div className={styles.form__input}>
                 <BiLockAlt size={24} />
                 <input type="password" placeholder='Confirmation mot de passe*' />
               </div>

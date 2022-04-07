@@ -1,47 +1,47 @@
-.cartContainer {
-    padding: 20px 0 20px 0;
-    display: flex;
-    img {
-        max-width: 150px;
+$red: var(--red-main);
+$gold: var(--gold-main);
+
+.wine__container {
+  padding: 20px 0 20px 0;
+  display: flex;
+  img {
+    max-width: 150px;
+  }
+
+  .wine__details {
+    width: 100%;
+    h1 {
+      color: $red;
+      font-size: 18px;
+    }
+    .details__quantity {
+      display: flex;
+
+      p {
+        padding: 10px;
+        font-size: 20px;
+        color: $gold;
+      }
+
+      button {
+        background-color: transparent;
+        color: $gold;
+        font-weight: bold;
+        font-size: 20px;
+        cursor: pointer;
+      }
     }
 
-    .cartData {
-        width: 100%;
-        h1 {
-            color: var(--red-main);
-            font-size: 18px;
-        }
-        .quantity {
-            display: flex;
-
-            p {
-                padding: 10px;
-                font-size: 20px;
-                color: var(--gold-main);
-            }
-
-            button {
-                background-color: transparent;
-                color: var(--gold-main);
-                font-weight: bold;
-                font-size: 20px;
-                cursor: pointer;
-            }
-        }
-
-        button {
-            padding: 3px;
-            width: 80%;
-            border-radius: 20px;
-            cursor: default;
-            color: white;
-        }
-        
+    button {
+      padding: 3px;
+      width: 80%;
+      border-radius: 20px;
+      cursor: default;
+      color: white;
     }
-
-
+  }
 }
 
-.cartContainer:not(:last-child) {
-    border-bottom: 2px solid var(--gold-main);
+.wine__container:not(:last-child) {
+  border-bottom: 2px solid $gold;
 }
