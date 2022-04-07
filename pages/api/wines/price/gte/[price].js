@@ -6,10 +6,10 @@ export default async function handle(req, res) {
   const wines = await prisma.wines.findMany({
     where: {
       price: {
-        gte: price //greater than or equal
-      }
+        gte: price, //greater than or equal
+      },
     },
-    orderBy: { price: sort } //asc or desc
+    orderBy: { price: sort }, //asc or desc
   });
   res.json(wines);
 }

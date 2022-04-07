@@ -4,7 +4,6 @@ import Footer from './footer';
 
 export default function Layout ({children}) {
 
-export default function Layout({ children }) {
   return (
     <>
       <div className="background"></div>
@@ -14,5 +13,6 @@ export default function Layout({ children }) {
       <Footer />
       {/* <Footer /> */}
     </>
-  );
+  )
+
 }

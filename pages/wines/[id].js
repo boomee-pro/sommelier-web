@@ -1,9 +1,9 @@
-import { useRouter } from "next/router";
-import Head from "next/head";
+import { useRouter } from "next/router"
+import Head from "next/head"
 
 export default function WinePage() {
-  const router = useRouter();
-  const { id } = router.query;
+  const router = useRouter()
+  const { id } = router.query
 
   return (
     <>
@@ -13,5 +13,5 @@ export default function WinePage() {
       </Head>
       <p>{id}</p>
     </>
-  );
+  )
 }
