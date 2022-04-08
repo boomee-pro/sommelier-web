@@ -4,6 +4,7 @@ import { useState } from 'react';
 
 import styles from 'styles/layout.module.scss';
 import classNames from 'classnames';
+import 'cooltipz-css/cooltipz.css';
 
 import { useAuth } from 'contexts/AuthContext';
 
@@ -45,6 +46,7 @@ const Navbar = () => {
           </li>
           <div className={styles.icons}>
             <li className={styles.logoSvg}>{isExpanded ? "Rechercher" : <BiSearch size={24} />}</li>
+            <li aria-label="Tooltip message" className="cooltipz--top">test</li>
             {user.connected && user.details.length !== 0 && <li className={styles.logoSvg} onClick={() => logout()}><BiDoorOpen size={24} /></li>}
           </div>
         </ul>
