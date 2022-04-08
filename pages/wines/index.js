@@ -20,7 +20,7 @@ export async function getStaticProps() {
 
 const Wines = ({ wines }) => {
   return (
-    <div>
+    <>
       <Head>
         <title>Nos vins</title>
         <meta name="description" content="Liste des vins" />
@@ -31,7 +31,7 @@ const Wines = ({ wines }) => {
           <Card key={wine.id} wine={wine}/>
         )}
       </div>
-    </div>
+    </>
   )
 }
 

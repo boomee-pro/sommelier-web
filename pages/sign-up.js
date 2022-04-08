@@ -26,7 +26,7 @@ const SignUp = () => {
         
         <div className={styles.form__container}>
 
-          <div className={styles.form__container}>
+          <div className={styles.form}>
             <h2>Inscription</h2>
 
             <div>

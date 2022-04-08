@@ -1,3 +1,5 @@
+import Head from "next/head";
+
 import styles from "styles/checkout.module.scss";
 
 import Layout from "components/Layout/layout";
@@ -16,6 +18,12 @@ const Checkout = () => {
   if(cart.length === 0) return <div className={styles.checkout__container}><p>Vous n&apos;avez pas de panier</p></div>
 
   return (
+    <>
+    <Head>
+      <title>Panier</title>
+      <meta name="description" content="Liste des vins" />
+    </Head>
+
     <div className={styles.checkout__container}>
       <h2>Votre commande</h2>
 
@@ -48,6 +56,7 @@ const Checkout = () => {
 
       </div>
     </div>
+    </>
   )
 }
 
