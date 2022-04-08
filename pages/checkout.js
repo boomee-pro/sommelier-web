@@ -6,9 +6,6 @@ import WineDetails from "components/Checkout/wineDetails";
 import { useCart } from "contexts/CartContext";
 
 
-import withAuth from "utils/withAuth";
-
-
 const Checkout = () => {
 
   const {cart, getTotalPrice} = useCart();
