@@ -10,7 +10,7 @@ export function useAuth() {
 
 export function AuthProvider({ children }) {
 
-  axios.defaults.baseURL = "http://localhost:3030/auth";
+  axios.defaults.baseURL = "http://localhost:3030/";
 
   const [isLoading, setLoading] = useState(true);
 
@@ -20,7 +20,7 @@ export function AuthProvider({ children }) {
   });
 
   function login(body) {
-    return axios.post("sign-in", body)
+    return axios.post("auth/sign-in", body)
     .then((res) => {
       setUser({
         connected: true,
@@ -54,7 +54,7 @@ export function AuthProvider({ children }) {
       if(decodedToken.exp * 1000 < Date.now()) logout();
       else {
         axios.defaults.headers.common['Authorization'] = token;
-        await axios.get("reconnect")
+        await axios.get("auth/reconnect")
         .then((res) => {
           setUser({
             connected: true,

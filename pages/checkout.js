@@ -1,4 +1,5 @@
 import Head from "next/head";
+import { useState } from "react";
 
 import styles from "styles/checkout.module.scss";
 
@@ -7,10 +8,30 @@ import WineDetails from "components/Checkout/wineDetails";
 
 import { useCart } from "contexts/CartContext";
 
+import { loadStripe } from "@stripe/stripe-js";
+import axios from "axios";
+
 
 const Checkout = () => {
 
+  const [loading, setLoading] = useState(false);
+
   const {cart, getTotalPrice} = useCart();
+
+
+  const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY);
+  const createCheckoutSession = async() => {
+    setLoading(true);
+    const stripe = await stripePromise;
+    const checkoutSession = await axios.post("stripe/session", {
+      items: JSON.stringify(cart)
+    });
+    const result = await stripe.redirectToCheckout({
+      sessionId: checkoutSession.data.id,
+    });
+    if(result.error) alert(result.error.message);
+    setLoading(false);
+  }
 
   if(cart.length === 0) return <div className={styles.checkout__container}><p>Vous n&apos;avez pas de panier</p></div>
 
@@ -46,7 +67,9 @@ const Checkout = () => {
           <div className={styles.checkout__content}>
             <div className={styles.content__data}>
               <h3>Total<span>{getTotalPrice()} €</span></h3>
-              <button>Procéder au paiement</button>
+              <button disabled={loading} onClick={createCheckoutSession}>
+                {loading ? "Chargement.." : "Procéder au paiement"}
+              </button>
             </div>
           </div>
         </div>
