@@ -4,7 +4,6 @@ import { useState } from 'react';
 
 import styles from 'styles/layout.module.scss';
 import classNames from 'classnames';
-import 'cooltipz-css/cooltipz.css';
 
 import { useAuth } from 'contexts/AuthContext';
 
