@@ -1,40 +1,68 @@
 .wine__container {
   width: 80%;
   margin: 150px auto;
-  border: 1px solid red;
   display: grid;
   grid-template-columns: 1fr 2fr;
 
   .image__container {
-    text-align: center;
     .image {
+      width: 70%;
+      margin: 0 auto;
+      border: 2px solid var(--gold-main);
+      box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+      border-radius: 20px;
+      background-color: white;
       img {
-        width: 80%;
+        width: 100%;
       }
     }
   }
 
   .wine__details {
     padding: 0 50px 0 50px;
-    border: 1px solid blue;
-    p:first-child {
+    h3 {
       color: var(--blue-dark);
       font-style: italic;
       font-size: 30px;
+      font-weight: 300;
       margin: 0;
     }
 
     h1 {
-      border: 1px solid blue;
+      display: flex;
+      align-items: center;
+      margin-top: 5px;
+      color: var(--blue-dark);
       span {
-        float: right;
+        margin-left: auto;
         font-size: 20px;
         font-weight: 300;
         color: #00880E;
       }
-
       border-bottom: 2px solid var(--gold-main);
     }
+
+    p {
+      font-size: 20px;
+    }
+
+    h2 {
+      color: var(--gold-main);
+      font-size: 32px;
+      font-weight: 400;
+    }
+
+    button {
+      background-color: var(--red-main);
+      color: white;
+      box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+      border-radius: 30px;
+      padding: 10px 50px;
+      font-weight: 200;
+      font-size: 20px;
+      text-transform: uppercase;
+    }
+
   }
 
 }

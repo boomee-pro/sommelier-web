@@ -91,6 +91,10 @@ $red: var(--red-main);
       box-shadow: $shadow;
     }
 
+    button:disabled {
+      background-color: var(--red-disabled);
+    }
+
     a {
       display: flex;
       justify-content: center;

@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { useRouter } from "next/router";
+import { useState } from 'react';
 
 import styles from 'styles/layout.module.scss';
 import classNames from 'classnames';
@@ -7,23 +8,30 @@ import classNames from 'classnames';
 import { useAuth } from 'contexts/AuthContext';
 
 // ICONS
-import { BiMenu, BiSearch } from "react-icons/bi";
+import { BiMenu, BiSearch, BiDoorOpen } from "react-icons/bi";
 
 const Navbar = () => {
 
-  const {user} = useAuth();
+  const [isExpanded, setExpanded] = useState(false);
+
+  const test = () => {
+    setExpanded(!isExpanded);
+    console.log(isExpanded);
+  }
+
+  const {user, logout} = useAuth();
   const router = useRouter();
 
   return (
-    <header className={styles.nav}>
+    <nav className={styles.nav}>
       <div className={styles.bg}></div>
       
-      <div className={styles.menu}>
+      <div className={styles.menu} onClick={test}>
         <BiMenu />
       </div>
       <div className={styles.logo}>Sommelier</div>
 
-      <div className={styles.items}>
+      <div className={classNames(styles.items, isExpanded && styles.expanded)}>
         <ul>
           <li className={classNames(router.pathname === "/" && styles.activeLink)}><Link href="/">Accueil</Link></li>
           <li className={classNames(router.pathname === "/wines" && styles.activeLink)}><Link href="/wines">Vins</Link></li>
@@ -35,10 +43,13 @@ const Navbar = () => {
             <Link href="/profile">{user.details.surname}</Link> : 
             <Link href="/sign-in">Se connecter</Link>}
           </li>
-          <li className={styles.logoSvg}><BiSearch size={24} /></li>
+          <div className={styles.icons}>
+            <li className={styles.logoSvg}>{isExpanded ? "Rechercher" : <BiSearch size={24} />}</li>
+            {user.connected && user.details.length !== 0 && <li className={styles.logoSvg} onClick={() => logout()}><BiDoorOpen size={24} /></li>}
+          </div>
         </ul>
       </div>
-    </header>
+    </nav>
   )
 }
 

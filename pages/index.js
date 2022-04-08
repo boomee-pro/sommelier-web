@@ -7,6 +7,8 @@ import styles from 'styles/home.module.scss'
 import Layout from 'components/Layout/layout';
 import Card from 'components/card';
 
+import { motion } from 'framer-motion';
+
 const Home = () => {
 
   const wines = [
@@ -48,11 +50,17 @@ const Home = () => {
       </Head>
 
       <div className={styles.container}>
-
+        
+        <motion.div
+          initial={{ x: "-300px", opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          exit={{ y: '-300px', opacity: 0 }}
+        >
         <section className={styles.banner__section}>
           <img className={styles.banner__img} src="/header.png" alt=""/>
           <h3>Lorem Ipsum dolor sit amet</h3>
         </section>
+        </motion.div>
 
         <section className={styles.favorites__section}>
           <div className={styles.favorites__background} />

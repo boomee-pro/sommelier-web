@@ -7,11 +7,14 @@ const Layout = ({noCartIcon, children}) => {
 
   return (
     <>
-      <div className="background"></div>
+      <div className="background" />
       <Navbar />
       {!noCartIcon && <Cart />}
-      <main>{children}</main>
+      <div style={{display: "flex", flexDirection: "column", minHeight: "100vh"}}>
+      <main style={{flex: 1}}>{children}</main>
       <Footer />
+      </div>
+
     </>
   )
 

@@ -10,6 +10,8 @@
   --red-main: hsl(348, 95%, 31%);
   --red-light: hsl(359, 65%, 39%);
   --red-ligther: hsl(11, 61%, 42%);
+
+  --red-disabled: hsl(348, 95%, 41%);
 }
 
 * {
@@ -41,4 +43,25 @@ button {
   background-repeat: no-repeat;
   opacity: 0.1;
   z-index: -1;
+}
+
+.spin {
+  animation: spin 2s infinite linear;
+}
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(359deg);
+  }
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+* {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }

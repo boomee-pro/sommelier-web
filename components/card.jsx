@@ -1,14 +1,28 @@
 /* eslint-disable @next/next/no-img-element */
+import { useState } from "react";
+
 import styles from "styles/card.module.scss";
 
 import { useCart } from "contexts/CartContext";
 
 // ICONS
-import { BiShow } from "react-icons/bi";
+import { BiShow, BiLoaderCircle } from "react-icons/bi";
 
 const Card = ({ wine }) => {
 
   const {addToCart} = useCart();
+  const [loading, setLoading] = useState(false);
+
+  const sleep = (milliseconds) => {
+    return new Promise(resolve => setTimeout(resolve, milliseconds))
+  }
+
+  const addItem = async (wine) => {
+    setLoading(true);
+    await sleep(500);
+    addToCart(wine);
+    setLoading(false);
+  }
 
   return (
     <div className={styles.card__container}>
@@ -28,7 +42,7 @@ const Card = ({ wine }) => {
       <h3>{wine.price} €</h3>
       
       <div className={styles.card__buttons}>
-        <button onClick={() => addToCart(wine)}>Ajouter</button>
+        <button disabled={loading} onClick={() => addItem(wine)}>{loading ? <BiLoaderCircle size={18} className="spin"/> : "Ajouter"}</button>
         <a href={`/wines/${wine.id}`}>
           <BiShow size={24} />
         </a>
