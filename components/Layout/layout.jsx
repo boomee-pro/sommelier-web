@@ -14,7 +14,6 @@ const Layout = ({noCartIcon, children}) => {
       <main style={{flex: 1}}>{children}</main>
       <Footer />
       </div>
-
     </>
   )
 

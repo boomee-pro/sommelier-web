@@ -12,7 +12,7 @@ import { BiMenu, BiSearch, BiDoorOpen, BiX } from "react-icons/bi";
 
 const Navbar = () => {
 
-  const [isExpanded, setExpanded] = useState(false);
+  const [open, setOpen] = useState(false);
 
 
 
@@ -32,24 +32,20 @@ const Navbar = () => {
         
   }
 
-  const test = () => {
-    setExpanded(!isExpanded);
-  }
-
   const {user, logout} = useAuth();
   const router = useRouter();
 
   return (
     <nav className={styles.nav__container} id="navbar">
 
-      {/* <div className={styles.nav__background} /> */}
+      <div className={styles.nav__background} />
       
       <div className={styles.nav__content}>
         <div className={styles.nav__logo}><Link href="/">SOMMELIER</Link></div>
 
-        <ul className={styles.nav__menu}>
-          <div className={classNames(styles.icon, styles.cancelBtn)}>
-            <BiX size={20}/>
+        <ul className={classNames(styles.nav__menu, open && styles.nav__active)}>
+          <div onClick={() => setOpen(false)} className={classNames(styles.icon, styles.cancelBtn, open && styles.show)}>
+            <BiX size={30}/>
           </div>
 
           <li><Link href="/">Accueil</Link></li>
@@ -64,8 +60,8 @@ const Navbar = () => {
           </li>
         </ul>
 
-        <div className={classNames(styles.icon, styles.menuBtn)}>
-          <BiMenu size={20} />
+        <div onClick={() => setOpen(true)} className={classNames(styles.icon, open && styles.hide)}>
+          <BiMenu size={30} />
         </div>
 
       </div>

@@ -4,7 +4,6 @@
   width: 100%;
   padding: 25px 0;
   transition: all 0.3s ease;
-  background-color: white;
   overflow: hidden;
   z-index: 5;
 
@@ -13,7 +12,7 @@
     width: 100%;
     height: 100%;
     top: 0;
-    background-image: url('/nav.png');
+    background-image: url('/nav.png'), #fff;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -37,6 +36,12 @@
     justify-content: space-between;
   }
 
+  .sticky{
+    position: fixed;
+    padding: 10px 0;
+    background: white;
+    box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.1);
+  }
 
   .nav__menu{
     display: inline-flex;
@@ -53,16 +58,8 @@
       }
     }
   }
+
 }
-
-.sticky{
-  position: fixed;
-  padding: 10px 0;
-  background: white;
-  box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.1);
-}
-
-
 .icon{
   color: #fff;
   font-size: 20px;
@@ -72,43 +69,45 @@
 .icon.cancelBtn{
   position: absolute;
   right: 30px;
-  top: 30px;
+  top: 20px;
 }
+.nav__container.sticky .icon.cancelBtn{
+  top: 10px;
+}
+
 @media (max-width: 868px) {
   .icon{
-    color: var(--gold-main);
+    display: block;
     height: 50px;
     width: 50px;
+    text-align: center;
+    line-height: 50px;
     border-radius: 50%;
     z-index: 9;
-    display: flex;
-    align-items: center;
-    justify-content: center;
   }
   .icon.cancelBtn{
     display: none;
   }
   .icon.cancelBtn.show{
-    display: flex;
+    display: block;
   }
   .icon.hide{
     display: none;
   }
   .nav__container .nav__menu{
     position: fixed;
-    top: -20px;
+    top: 0;
     left: 0;
     height: 100vh;
     width: 100%;
-    background: #fff;
+    background: #222;
     display: block;
-    padding: 40px 0;
     text-align: center;
-    clip-path: circle(25px at calc(100% - 55px) calc(0% + 55px));
+    clip-path: circle(25px at calc(100% - 55px) calc(0% + 50px));
     transition: all 0.3s ease;
   }
   .nav__container.sticky .nav__menu{
-    clip-path: circle(25px at calc(100% - 55px) calc(0% + 38px));
+    clip-path: circle(25px at calc(100% - 55px) calc(0% + 35px));
   }
   .nav__container .nav__menu.nav__active{
     clip-path: circle(75%);
