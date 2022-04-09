@@ -122,3 +122,43 @@ $gold: var(--gold-main);
     }
   }
 }
+
+
+@media (max-width: 1176px) {
+
+  .banner__section {
+    h3 {
+      font-size: 35px !important;
+    }
+  }
+
+  .home__images {
+    display: block !important;
+    img {
+      max-width: 80%;
+    }
+  }
+
+  .details__section {
+    display: block !important;
+  }
+}
+
+@media (max-width: 970px) {
+
+  .banner__section {
+    h3 {
+      font-size: 30px !important;
+    }
+  }
+
+  .favorites__cards {
+    display: flex !important;
+    flex-direction: column;
+    gap: 50px !important;
+  }
+
+
+
+
+}
