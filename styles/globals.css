@@ -65,3 +65,9 @@ button {
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+@media
+(prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}

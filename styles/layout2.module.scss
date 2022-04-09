@@ -1,0 +1,136 @@
+.nav__container {
+  width: 100%;
+  padding: 25px 0;
+  overflow: hidden;
+  background-color: white;
+  -webkit-transition: padding 0.3s ease-in-out;
+  transition: padding 0.3s ease-in-out;
+  -o-transition: transform 0.8s cubic-bezier(0.2, 1, 0.2, 1), padding 0.3s ease-in-out, background-color 0.2s ease-in-out, filter 0.3s ease-in-out;
+  z-index: 6;
+
+  .nav__background {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    background-image: url('/nav.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: white;
+    left: 30%;
+    opacity: .1;
+    z-index: -1;
+  }
+
+  .nav__content {
+    margin: auto;
+    padding: 0 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .nav__logo {
+      a {
+        color: var(--gold-main);
+        font-size: 30px;
+        font-weight: 600;
+        text-decoration: none;
+      }
+    }
+
+    .nav__menu {
+      display: inline-flex;
+      gap: 30px;
+      li {
+        list-style: none;
+        a {
+          color: var(--gold-main);
+          font-size: 18px;
+          font-weight: 500;
+          text-decoration: none;
+          transition: all 0.3s ease;
+        }
+      }
+    }
+  }
+}
+
+.sticky{
+  position: fixed;
+  padding: 10px 0;
+  background: white;
+  box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.1);
+}
+
+.icon{
+  color: var(--gold-main);
+  font-size: 20px;
+  cursor: pointer;
+  border: 1Px solid red;
+  display: none;
+}
+.icon.cancel-btn{
+  position: absolute;
+  right: 30px;
+  top: 20px;
+}
+
+.nav__container.sticky .icon.cancel-btn{
+  top: 10px;
+}
+
+@media (max-width: 868px) {
+
+  body.disabledScroll {
+    overflow: hidden;
+  }
+  .icon {
+    display: block;
+    height: 50px;
+    width: 50px;
+    text-align: center;
+    line-height: 50px;
+    border-radius: 50%;
+    z-index: 9;
+  }
+  .icon.cancelBtn {
+    display: none;
+  }
+
+  .icon.cancelBtn.show {
+    display: block;
+  }
+
+  .icon.hide {
+    display: none;
+  }
+
+  .nav__container .nav__menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100%;
+    // background: #222;
+    display: block;
+    padding: 40px 0;
+    text-align: center;
+    clip-path: circle(25px at calc(100% - 55px) calc(0% + 50px));
+    transition: all 0.3s ease;
+  }
+  .nav__container.sticky .nav__menu{
+    clip-path: circle(25px at calc(100% - 55px) calc(0% + 35px));
+  }
+  .nav__container .nav__menu.active{
+    clip-path: circle(75%);
+  }
+  .navbar .menu-list li{
+    margin-top: 45px;
+  }
+  .navbar .menu-list li a{
+    font-size: 23px;
+  }
+
+}
+
