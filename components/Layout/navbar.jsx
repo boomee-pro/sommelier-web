@@ -22,14 +22,7 @@ const Navbar = () => {
 
   const handleScroll = () => {
     const navbar = document.querySelector("#navbar");
-    const navTop = navbar.offsetTop;
-    console.log(navTop);
-    if(window.scrollY > 0) {
-      navbar.classList.add(styles.sticky);
-    } else {
-      navbar.classList.remove(styles.sticky);
-    }
-        
+    window.scrollY > 0 ? navbar.classList.add(styles.sticky) : navbar.classList.remove(styles.sticky);
   }
 
   const {user, logout} = useAuth();
@@ -48,10 +41,10 @@ const Navbar = () => {
             <BiX size={30}/>
           </div>
 
-          <li><Link href="/">Accueil</Link></li>
-          <li><Link href="/wines">Vins</Link></li>
-          <li><Link href="/">Notre boutique</Link></li>
-          <li><Link href="/">Notre histoire</Link></li>
+          <li className={classNames(router.pathname === "/" && styles.activeLink)}><Link href="/">Accueil</Link></li>
+          <li className={classNames(router.pathname === "/wines" && styles.activeLink)}><Link href="/wines">Vins</Link></li>
+          <li className={classNames(router.pathname === "/ourshop" && styles.activeLink)}><Link href="/">Notre boutique</Link></li>
+          <li className={classNames(router.pathname === "/ourstory" && styles.activeLink)}><Link href="/">Notre histoire</Link></li>
           <li className={styles.spacer}></li>
           <li>
             {(user.connected && user.details.length !== 0) ? 
