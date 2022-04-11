@@ -92,6 +92,11 @@ $red: var(--red-main);
       box-shadow: $shadow;
     }
 
+    button:hover, a:hover {
+      transform: scale(1.05);
+      transition: 0.3s ease;
+    }
+
     button:disabled {
       background-color: var(--red-disabled);
     }

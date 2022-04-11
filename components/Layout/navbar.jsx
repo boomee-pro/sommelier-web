@@ -22,6 +22,7 @@ const Navbar = () => {
 
   const handleScroll = () => {
     const navbar = document.querySelector("#navbar");
+    if(!navbar) return;
     window.scrollY > 20 ? navbar.classList.add(styles.sticky) : navbar.classList.remove(styles.sticky);
   }
 
@@ -51,6 +52,10 @@ const Navbar = () => {
             <Link href="/profile">{user.details.surname}</Link> : 
             <Link href="/sign-in">Se connecter</Link>}
           </li>
+          {/* <div className={styles.icons}>
+            <li className={styles.logoSvg}>{open ? "Rechercher" : <BiSearch size={24} />}</li>
+            {user.connected && user.details.length !== 0 && <li className={styles.logoSvg} onClick={() => logout()}><BiDoorOpen size={24} /></li>}
+          </div> */}
         </ul>
 
         <div onClick={() => setOpen(true)} className={classNames(styles.icon, open && styles.hide)}>

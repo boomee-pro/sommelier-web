@@ -134,7 +134,7 @@ const Home = ({wines}) => {
               <img src="/section/3.jpg" alt="third picture"/>
             </div>
             <p>
-             &quot;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod temporincididunt ut labore et dolore magna aliqua.&quot;
+             &quot;On ne peut avoir de culture gastronomique sans vin.&quot;
             </p>
         </section>
 

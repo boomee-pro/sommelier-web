@@ -19,8 +19,8 @@ const Cart = () => {
   return (
     <>
       <div className={styles.cart__float} onClick={() => setOpen(true)}>
-        <BiCart size={24} />
-        <span className={styles.float__amount}>{getItemsCount()}</span>
+        <BiCart className={styles.cart__float__icon} size={70} />
+        <span>{getItemsCount()}</span>
       </div>
 
       <div className={classnames(styles.cart__slider, open && styles.active)}>
