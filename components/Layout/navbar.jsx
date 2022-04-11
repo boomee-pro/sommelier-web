@@ -22,7 +22,7 @@ const Navbar = () => {
 
   const handleScroll = () => {
     const navbar = document.querySelector("#navbar");
-    window.scrollY > 0 ? navbar.classList.add(styles.sticky) : navbar.classList.remove(styles.sticky);
+    window.scrollY > 20 ? navbar.classList.add(styles.sticky) : navbar.classList.remove(styles.sticky);
   }
 
   const {user, logout} = useAuth();

@@ -16,10 +16,13 @@
     "jwt-decode": "^3.1.2",
     "next": "12.1.2",
     "react": "18.0.0",
+    "react-cookie-consent": "^7.4.1",
     "react-dom": "18.0.0",
     "react-icons": "^4.3.1",
     "react-toastify": "^8.2.0",
-    "stripe": "^8.215.0"
+    "scrollreveal": "^4.0.9",
+    "stripe": "^8.215.0",
+    "underscore": "^1.13.2"
   },
   "devDependencies": {
     "eslint": "8.12.0",

@@ -1,3 +1,5 @@
+import { useRef, useEffect } from "react";
+
 import Head from 'next/head';
 import Link from 'next/link';
 
@@ -9,8 +11,7 @@ import Card from 'components/card';
 
 import { motion } from 'framer-motion';
 
-const Home = () => {
-
+export async function getStaticProps() {
   const wines = [
     {
       id: 0,
@@ -40,6 +41,38 @@ const Home = () => {
       flag: "/flags/IT.svg"
     },
   ]
+  return { props: { wines }}
+}
+
+const Home = ({wines}) => {
+
+  const favoritesWineAnim = useRef(null);
+  const imgAnim = useRef(null);
+
+  useEffect(() => {
+    async function animate() {
+      const sr = (await import("scrollreveal")).default
+
+      if(favoritesWineAnim.current) {
+        sr().reveal(favoritesWineAnim.current.querySelectorAll("div"), {
+          duration: 250,
+          delay: 150,
+          interval: 100,
+          origin: "bottom",
+          distance: "20px",
+          reset: false,
+        });
+      }
+
+      if(imgAnim.current) {
+        sr().reveal(imgAnim.current, {
+          duration: 1200,
+          distance: '10px',
+        })
+      }
+    }
+    animate();
+  }, []);
 
   return (
     <>
@@ -49,23 +82,41 @@ const Home = () => {
         <link rel="icon" href="/bx-wine.svg" />
       </Head>
 
-      <div className={styles.container}>
-        
-        <motion.div
+      <motion.div
           initial={{ x: "-300px", opacity: 0 }}
           animate={{ x: 0, opacity: 1 }}
           exit={{ y: '-300px', opacity: 0 }}
         >
-        <section className={styles.banner__section}>
+      <div className={styles.banner__header}>
+
+
+          <div className={styles.banner__background}>
+            <img src="/header.png" alt="" />
+          </div>
+          {/* <div className={styles.banner__content}>
+            <div className={styles.banner_data}>
+              <div className={styles.banner__wine__details}>
+                <h1>LE VIN DU MOIS</h1>
+                <h3>{wines[0].name}</h3>
+              </div>
+              <Card wine={wines[0]}/>
+            </div>
+          </div> */}
+
+
+        {/* <section className={styles.banner__section}>
           <img className={styles.banner__img} src="/header.png" alt=""/>
           <h3>Lorem Ipsum dolor sit amet</h3>
-        </section>
-        </motion.div>
+        </section> */}
+      </div>
+      </motion.div>
 
+      <div className={styles.container}>
+        
         <section className={styles.favorites__section}>
           <div className={styles.favorites__background} />
           <h1>Vos préférés</h1>
-          <div className={styles.favorites__cards}>
+          <div className={styles.favorites__cards} ref={favoritesWineAnim}>
           {wines.map((wine) => 
             <Card key={wine.id} wine={wine}/>
           )}
@@ -77,7 +128,7 @@ const Home = () => {
 
         <section className={styles.home__section}>
             <h1>High Quality Wine for you and your beloved ones</h1>
-            <div className={styles.home__images}>
+            <div className={styles.home__images} ref={imgAnim}>
               <img src="/section/1.jpg" alt="first picture" />
               <img src="/section/2.jpg" alt="second picture"/>
               <img src="/section/3.jpg" alt="third picture"/>
@@ -89,7 +140,7 @@ const Home = () => {
 
 
 
-        <section className={styles.details__section}>
+        {/* <section className={styles.details__section}>
           <img src="/maps.png" />
           <div className={styles.details__content}>
             <h2>Good Wine Shop&apos;s Logo</h2>
@@ -104,7 +155,7 @@ const Home = () => {
               <p>Email: fr.order@goodwhineshop.com</p>
             </div>
           </div>
-        </section>
+        </section> */}
       </div>
 
 

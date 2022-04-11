@@ -8,12 +8,14 @@ const Layout = ({noCartIcon, children}) => {
   return (
     <>
       <div className="background" />
-      <Navbar />
-      {!noCartIcon && <Cart />}
-      <div style={{display: "flex", flexDirection: "column", minHeight: "100vh"}}>
-      <main style={{flex: 1}}>{children}</main>
-      <Footer />
+        <Navbar />
+        {!noCartIcon && <Cart />}
+        <div style={{display: "flex", flexDirection: "column", minHeight: "100vh"}}>
+        <main style={{flex: 1}}>{children}</main>
+        <Footer />
       </div>
+
+
     </>
   )
 
