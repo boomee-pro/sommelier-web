@@ -5,6 +5,8 @@ import styles from "styles/checkout.module.scss";
 
 import Layout from "components/Layout/layout";
 import WineDetails from "components/Checkout/wineDetails";
+import BreadCrumbs from "components/breadcrumbs";
+
 
 import { useCart } from "contexts/CartContext";
 
@@ -43,6 +45,12 @@ const Checkout = () => {
     </Head>
 
     <div className={styles.checkout__container}>
+
+      <BreadCrumbs items={[
+        {title: "Accueil", destination: "/"},
+        {title: "Validation panier", active: true,}
+      ]} />
+
       <h2>Votre commande</h2>
 
       <div className={styles.checkout__subcontainer}>

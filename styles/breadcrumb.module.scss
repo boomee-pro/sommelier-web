@@ -1,0 +1,40 @@
+.breadcrumb{
+  display:-ms-flexbox;
+  display:flex;
+  -ms-flex-wrap:wrap;
+  flex-wrap:wrap;
+  padding: 0;
+  margin-bottom: 30px;
+  list-style:none;
+  background-color:transparent;
+  font-weight: 600;
+  font-size: .75rem;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+}
+.breadcrumbItem{
+  display:-ms-flexbox;
+  display:flex;
+  color: #827f92;
+  +.breadcrumbItem {
+    padding-left: 20px;
+  }
+  +.breadcrumbItem::before {
+    display:inline-block;
+    padding-right:.5rem;
+    color:#6c757d;
+    content:"/"
+  }
+  +.breadcrumbItem:hover::before {
+    text-decoration: none;
+  }
+  &.breadcrumbActive {
+    color: var(--gold-main);
+
+  }
+
+  a {
+    color: currentColor;
+    text-decoration: none;
+  }
+}

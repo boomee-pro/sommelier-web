@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { useRouter } from "next/router";
 import { useState, useEffect } from 'react';
 
-import styles from 'styles/layout2.module.scss';
+import styles from 'styles/navbar.module.scss';
 import classNames from 'classnames';
 
 import { useAuth } from 'contexts/AuthContext';
