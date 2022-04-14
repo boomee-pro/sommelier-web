@@ -1,10 +1,13 @@
-import Layout from "components/Layout/layout";
+import { useCart } from "contexts/CartContext";
 
+import Layout from "components/Layout/layout";
 import BreadCrumbs from "components/breadcrumbs";
 
 import styles from "styles/order.module.scss";
 
 const Order = () => {
+
+  const { cart } = useCart();
 
   return (
     <div className={styles.order__container}>
@@ -66,6 +69,54 @@ const Order = () => {
             </div>
           </div>
         </div>
+
+        <div className={styles.order__settings}>
+          <div className={styles.order__box}>
+            <div className={styles.order__box__content}>
+              <h3>Votre commande ({cart.length})</h3>
+              <hr />
+              <div className={styles.order__details}>
+                <h4>Résumé</h4>
+                <p>Sous-total<span>8,050$</span></p>
+                <hr />
+                <p>Livraison<span>INCLUS</span></p>
+                <hr />
+                <h5>Total<span>12,776$</span></h5>
+              </div>
+            </div>
+          </div>
+          
+
+
+          <div className={styles.order__box}>
+            <div className={styles.order__box__content}>
+              <ul className={styles.order__payment__list}>
+                <li>
+                  <input type="radio" name="payment_type" id="bancontact"/>
+                  <label htmlFor="bancontact">Bancontact</label>
+                  <div className={styles.payment__box}>
+                    <div className={styles.payment__data}>
+                      <span>Vous allez être redirigé vers Bancontact</span>
+                    </div>                  
+                  </div>
+                </li>
+                <li>
+                  <input type="radio" name="payment_type" id="stripe" defaultChecked />
+                  <label htmlFor="stripe">Paiement par carte (Stripe)</label>
+                  <div className={styles.payment__box}>
+                    <div className={styles.payment__data}>
+                      <span>Vous allez être redirigé vers Stripe</span>
+                    </div>                  
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+
+
+
       </div>
     </div>
   )

@@ -4,8 +4,8 @@
 
   .order__grid {
     display: grid;
-    grid-template-columns: 2.5fr 1fr;
-    gap: 40px;
+    grid-template-columns: 2fr 1fr;
+    gap: 50px;
 
     .order__forms {
 
@@ -64,11 +64,105 @@
 
   }
 
+  .order__box {
+    background: white;
+    border: 2px solid hsla(33, 57%, 47%, 0.1);
+    box-shadow: 0 4px 4px hsla(0, 0%, 0%, 0.25);
+    border-radius: 10px;
+    margin-top: 40px;
+    height: fit-content;
+    &__content {
+      width: 90%;
+      margin: 20px auto;
+
+      h3 {
+        width: fit-content;
+        color: white;
+        padding: 5px 20px;
+        font-size: 17px;
+        font-weight: 400;
+        background-color: var(--red-main);
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        border-radius: 10px;
+      }
   
+      hr {
+        background-color: var(--gold-main);
+        height: 1px;
+        border: none;
+      }
+
+      .order__details {
+        width: 80%;
+        margin: 0 auto;
+        h4 {
+          font-weight: 400;
+          font-size: 18px;
+          color: var(--gold-main);
+        }
+  
+        p {
+          margin: 5px;
+        }
+  
+        span {
+          float: right;
+        }
+  
+        hr {
+          margin: 0;
+          height: 0px;
+          border: 1px solid #C4C4C4;
+        }
+  
+        h5 {
+          font-size: 17px;
+          span {
+            color: var(--gold-main);
+          }
+        }
+      }
+
+    }
+  }
 }
 
-.required::-webkit-input-placeholder:after {
-  content: '*';
-  color: darkred;
-  font-size: 1.5rem;
+
+.order__payment__list {
+  list-style-type: none;
+  padding: 0;
+  li {
+    margin-bottom: 10px;
+    // .payment__box:before {
+    //   content: "";
+    //   display: block;
+    //   border: 14px solid hsl(0, 2%, 92%);
+    //   border-right-color: transparent;
+    //   border-left-color: transparent;
+    //   border-top-color: transparent;
+    //   position: absolute;
+    //   top: -.75em;
+    //   left: 0;
+    //   margin: -1em 0 0 2em;
+    // }
+    .payment__box {
+      display: none;
+      overflow: hidden;
+      position: relative;
+      background-color: hsl(0, 2%, 92%);
+      box-shadow: 0 4px 4px hsla(0, 0%, 0%, 0.25);
+      p {
+        font-size: 14px;
+        margin: 0;
+      }
+    }
+
+    input:checked ~ .payment__box {
+      padding: 15px;
+      margin: 15px 0;
+
+      display: block;
+    }
+
+  }
 }
