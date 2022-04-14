@@ -1,4 +1,5 @@
 import Head from "next/head";
+import Link from "next/link";
 import { useState } from "react";
 
 import styles from "styles/checkout.module.scss";
@@ -75,9 +76,12 @@ const Checkout = () => {
           <div className={styles.checkout__content}>
             <div className={styles.content__data}>
               <h3>Total<span>{getTotalPrice()} €</span></h3>
-              <button disabled={loading} onClick={createCheckoutSession}>
-                {loading ? "Chargement.." : "Procéder au paiement"}
-              </button>
+              <Link href="/order" passHref>
+                <button>
+                  {/* {loading ? "Chargement.." : "Procéder au paiement"} */}
+                  Procéder au paiement
+                </button>
+              </Link>
             </div>
           </div>
         </div>

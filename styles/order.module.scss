@@ -2,5 +2,73 @@
   width: 80%;
   margin: 150px auto;
 
+  .order__grid {
+    display: grid;
+    grid-template-columns: 2.5fr 1fr;
+    gap: 40px;
 
+    .order__forms {
+
+      h2 {
+        color: var(--gold-main);
+        font-weight: 400;
+        font-size: 26px;
+      }
+
+      h4 {
+        color: var(--red-main);
+        font-weight: 400;
+        font-size: 19px;
+      }
+
+      .form__input {
+
+
+        input {
+          border-radius: 18px;
+          line-height: 45px;
+          padding-left: 10%;
+          width: 100%;
+          color: hsl(0, 0%, 47%);
+          border: 1px solid hsl(0, 0%, 60%);
+          outline: none;
+          font-size: 16px;
+        }
+
+
+    
+        small {
+          display: block;
+          font-size: 12px;
+          text-align: left;
+          padding-left: 30px;
+          color: var(--red-light);
+        }
+      }
+  
+      .form__split {
+        display: flex;
+        flex-wrap: wrap;
+        column-gap: 40px;
+        row-gap: 20px;
+        div {
+          width: calc(50% - 20px);
+        }
+      }
+    }
+
+
+
+
+  
+
+  }
+
+  
+}
+
+.required::-webkit-input-placeholder:after {
+  content: '*';
+  color: darkred;
+  font-size: 1.5rem;
 }

@@ -11,7 +11,7 @@
   --red-light: hsl(359, 65%, 39%);
   --red-ligther: hsl(11, 61%, 42%);
 
-  --red-disabled: hsl(348, 95%, 41%);
+  --red-disabled: hsl(348, 45%, 33%);
 }
 
 * {

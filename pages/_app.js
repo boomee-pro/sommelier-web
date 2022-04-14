@@ -5,7 +5,7 @@ import CookieConsent from 'react-cookie-consent';
 import { CartProvider } from "contexts/CartContext";
 import { AuthProvider } from "contexts/AuthContext";
 
-export default function MyApp({ Component, pageProps, router }) {
+export default function MyApp({ Component, pageProps }) {
   
 
   const getLayout = Component.getLayout || ((page) => page);

@@ -44,7 +44,8 @@ export async function getStaticProps() {
   return { props: { wines }}
 }
 
-const Home = ({wines}) => {
+const Home = ({wines, value}) => {
+  console.log(value);
 
   const favoritesWineAnim = useRef(null);
   const imgAnim = useRef(null);
@@ -172,5 +173,6 @@ Home.getLayout = function getLayout(page) {
     </Layout>
   )
 }
+
 
 export default Home;

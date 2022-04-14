@@ -3,7 +3,8 @@ import Footer from './footer';
 
 import Cart from '../Cart/cart';
 
-const Layout = ({noCartIcon, children}) => {
+const Layout = ({noCartIcon, children, wines}) => {
+
 
   return (
     <>
@@ -20,5 +21,6 @@ const Layout = ({noCartIcon, children}) => {
   )
 
 }
+
 
 export default Layout;

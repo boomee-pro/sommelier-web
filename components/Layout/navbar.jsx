@@ -10,8 +10,9 @@ import { useAuth } from 'contexts/AuthContext';
 // ICONS
 import { BiMenu, BiSearch, BiDoorOpen, BiX } from "react-icons/bi";
 
-const Navbar = () => {
 
+const Navbar = ({ wines }) => {
+  const {logout, user} = useAuth();
   const [open, setOpen] = useState(false);
 
 
@@ -26,7 +27,6 @@ const Navbar = () => {
     window.scrollY > 20 ? navbar.classList.add(styles.sticky) : navbar.classList.remove(styles.sticky);
   }
 
-  const {user, logout} = useAuth();
   const router = useRouter();
 
   return (

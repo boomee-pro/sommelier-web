@@ -4,6 +4,7 @@ import styles from "styles/wines.module.scss";
 
 import Card from "components/card"
 import Layout from 'components/Layout/layout';
+import BreadCrumbs from "components/breadcrumbs";
 
 
 export async function getStaticProps() {
@@ -55,12 +56,21 @@ const Wines = ({ wines }) => {
         <title>Nos vins</title>
         <meta name="description" content="Liste des vins" />
       </Head>
+      <div className={styles.wines__container__main}>
+        <BreadCrumbs items={[
+            {title: "Accueil", destination: "/"},
+            {title: "Liste des vins", active: true,}
+        ]} />
 
-      <div className={styles.wines__container}>
+        <div className={styles.wines__container}>
         {wines.map((wine) => 
           <Card key={wine.id} wine={wine}/>
         )}
+        </div>
       </div>
+
+    
+
     </>
   )
 }

@@ -1,9 +1,12 @@
+.wines__container__main {
+  width: 80%;
+  margin: 150px auto;
+}
+
 .wines__container {
   position: relative;
-  width: 80%;
   display: grid;
   gap: 3em;
-  margin: 150px auto;
   grid-template-columns: repeat(4, 1fr);
 }
 
