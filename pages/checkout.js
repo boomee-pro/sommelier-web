@@ -26,7 +26,7 @@ const Checkout = () => {
   const createCheckoutSession = async() => {
     setLoading(true);
     const stripe = await stripePromise;
-    const checkoutSession = await axios.post("stripe/session", {
+    const checkoutSession = await axios.post("api/stripesession", {
       items: JSON.stringify(cart)
     });
     const result = await stripe.redirectToCheckout({
@@ -76,12 +76,12 @@ const Checkout = () => {
           <div className={styles.checkout__content}>
             <div className={styles.content__data}>
               <h3>Total<span>{getTotalPrice()} €</span></h3>
-              <Link href="/order" passHref>
-                <button>
-                  {/* {loading ? "Chargement.." : "Procéder au paiement"} */}
-                  Procéder au paiement
+              {/* <Link href="/order" passHref> */}
+                <button onClick={createCheckoutSession}>
+                  {loading ? "Chargement.." : "Procéder au paiement"}
+                  {/* Procéder au paiement */}
                 </button>
-              </Link>
+              {/* </Link> */}
             </div>
           </div>
         </div>

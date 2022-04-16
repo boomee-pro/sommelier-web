@@ -44,8 +44,7 @@ export async function getStaticProps() {
   return { props: { wines }}
 }
 
-const Home = ({wines, value}) => {
-  console.log(value);
+const Home = ({wines}) => {
 
   const favoritesWineAnim = useRef(null);
   const imgAnim = useRef(null);

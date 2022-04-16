@@ -10,7 +10,7 @@ export function useAuth() {
 
 export function AuthProvider({ children }) {
 
-  axios.defaults.baseURL = "http://localhost:3030/";
+  axios.defaults.baseURL = "http://localhost:3000/";
 
   const [isLoading, setLoading] = useState(true);
 
