@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useCart } from "contexts/CartContext";
 
 import Layout from "components/Layout/layout";
@@ -5,9 +6,14 @@ import BreadCrumbs from "components/breadcrumbs";
 
 import styles from "styles/order.module.scss";
 
+import { motion, AnimatePresence } from "framer-motion";
+
 const Order = () => {
 
+  const [current, setCurrent] = useState(0);
+
   const { cart } = useCart();
+
 
   return (
     <div className={styles.order__container}>
@@ -91,23 +97,56 @@ const Order = () => {
           <div className={styles.order__box}>
             <div className={styles.order__box__content}>
               <ul className={styles.order__payment__list}>
-                <li>
+                
+                <li onClick={() => setCurrent(0)}>
                   <input type="radio" name="payment_type" id="bancontact"/>
                   <label htmlFor="bancontact">Bancontact</label>
+                  <AnimatePresence initial={false}>
+                  {current === 0 && <motion.div
+                  key="answer"
+                  initial={{ opacity: 0 }}
+                  animate={{
+                    opacity: 1,
+                    transition: {
+                      duration: 0.5,
+                    },
+                  }}
+                  exit={{ opacity: 0 }}
+                  >
                   <div className={styles.payment__box}>
                     <div className={styles.payment__data}>
                       <span>Vous allez être redirigé vers Bancontact</span>
                     </div>                  
                   </div>
+                  </motion.div>
+                  }
+                  </AnimatePresence>
                 </li>
-                <li>
+                <li onClick={() => setCurrent(1)}>
+
                   <input type="radio" name="payment_type" id="stripe" defaultChecked />
                   <label htmlFor="stripe">Paiement par carte (Stripe)</label>
+                <AnimatePresence initial={false}>
+
+                  {current === 1 && <motion.div
+                  key="answer"
+                  initial={{ opacity: 0 }}
+                  animate={{
+                    opacity: 1,
+                    transition: {
+                      duration: 0.5,
+                    },
+                  }}
+                  exit={{ opacity: 0 }}
+                  >
                   <div className={styles.payment__box}>
                     <div className={styles.payment__data}>
                       <span>Vous allez être redirigé vers Stripe</span>
                     </div>                  
                   </div>
+                  </motion.div>}
+                  </AnimatePresence>
+
                 </li>
               </ul>
             </div>
