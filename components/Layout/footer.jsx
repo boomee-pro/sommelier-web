@@ -1,11 +1,9 @@
-import styles from 'styles/layout.module.scss';
-
-const footer = () => {
+const Footer = () => {
   return (
-    <footer className={styles.footer}>
-        Copyright © 2022 <span>Shop’s Name</span> All Rights Reserved.
+    <footer className="bg-white p-5 text-center">
+        Copyright © 2022 <span className='text-gold-main'>Shop’s Name</span> All Rights Reserved.
     </footer>
   )
 }
 
-export default footer;
+export default Footer;

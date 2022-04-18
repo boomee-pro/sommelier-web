@@ -18,6 +18,9 @@ module.exports = {
         'red-main': 'hsl(348, 95%, 31%)',
         'red-light': 'hsl(359, 65%, 39%)',
         'red-ligther': 'hsl(11, 61%, 42%)'
+      },
+      boxShadow: {
+        custom: "0px 3px 5px 0px rgba(0,0,0,0.1)"
       }
 
     },

@@ -1,45 +1,75 @@
-import Image from "next/image";
+import { useEffect, useState } from "react";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
-import styles from "styles/navbar.module.scss";
+import { BiMenu, BiX} from "react-icons/bi";
 
-import { useEffect } from "react";
+
+const NAVIGATIONS = [
+  {label: "Accueil", href:"/"},
+  {label: "Vins", href:"/wines"},
+  {label: "Notre histoire", href:"/story"},
+  {},
+  {label: "Se connecter", href:"/sign-in"}
+]
 
 const Header = () => {
 
+  const router = useRouter();
+  const [sticky, setSticky] = useState(false);
+  const [expanded, setExpanded] = useState(false);
+
   useEffect(() => {
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', () => setSticky(window.scrollY > 25));
   }, []);
 
-  const handleScroll = () => {
-    const navbar = document.querySelector("#navbar");
-    if(!navbar) return;
-    if(window.scrollY > 20) {
-      navbar.classList.add("py-2");
-    } else {
-      navbar.classList.remove("py-2");
-    }
-  }
 
   return (
-    <header id="navbar" className="sticky top-0 bg-white p-1 py-6 overflow-hidden transition-all ease-linear delay-30 z-10">
-        <div className="-z-10 absolute top-0 w-full h-full left-1/4 bg-header bg-center bg-no-repeat bg-cover opacity-10"/>
+    <header className=
+      {`sticky top-0 bg-white p-1 transition-all ease-linear duration-30 z-10
+      ${sticky ? "py-2.5 shadow-custom" : "py-6"}
+      `}>
         
-        <div className="flex flex-wrap items-center justify-between px-20 mx-auto">
-          <div className="text-gold-main text-2xl uppercase"><Link href="/" >Sommelier</Link></div>
+        <div className="absolute overflow-hidden top-0 left-0 w-full h-full -z-10">
+          <div className="absolute w-full h-full left-1/4 bg-header bg-center bg-no-repeat bg-cover opacity-10"/>
+          </div>
+        
+        <div className="flex flex-wrap items-center justify-between px-10 font-semibold mx-auto">
+          <div className="text-gold-main text-3xl uppercase"><Link href="/">Sommelier</Link></div>
 
-          <div className="hidden w-full md:block md:w-auto">
-            <ul className="flex flex-col md:flex-row md:space-x-8 md:text-sm md:font-medium">
+          <div onClick={() => setExpanded(true)} className="cursor-pointer text-gold-main md:hidden">
+            <BiMenu size={30} />
+          </div>
 
-              <li className="block py-2 pr-4 pl-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white"><Link href="/">Accueil</Link></li>
-              <li className="block py-2 pr-4 pl-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white"><Link href="/">Accueil</Link></li>
-              <li className="block py-2 pr-4 pl-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white"><Link href="/">Accueil</Link></li>
-
-            
+          <div className={`
+            ${expanded ? "absolute top-0 left-0 w-screen bg-white h-screen flex items-center justify-center max-w-full" : "hidden md:block"}`}>
+            <ul className={`flex flex-col gap-10 md:flex-row md:gap-8 lg:gap-14 md:text-sm md:font-medium`}>
+              {NAVIGATIONS.map((item,i) => 
+                <li key={i}
+                    className={`${!item.label && "hidden"} block text-gold-main text-center md:bg-transparent md:p-0 text-xl md:relative`} 
+                >
+                  {item.label && <Link href={item.href}>
+                    <a className={`
+                      ${router.pathname === item.href ? 
+                        "md:after:scale-x-100" :
+                        "md:hover:after:origin-bottom-left md:hover:after:scale-x-100"
+                      }
+                      md:after:absolute md:after:content-[''] 
+                      md:after:w-full md:after:h-0.5 md:after:-bottom-0.5 md:after:left-0 
+                    md:after:bg-gold-main md:after:scale-x-0 md:after:origin-bottom-right 
+                      md:after:transition-transform md:after:duration-300`} 
+                    >
+                      {item.label}
+                    </a></Link>}
+                </li>
+              )}
             </ul>
           </div>
 
-
+          {expanded && 
+          <div onClick={() => setExpanded(false)} className="cursor-pointer text-gold-main absolute right-10 top-7">
+            <BiX size={30} />
+          </div>}
 
         </div>
 
