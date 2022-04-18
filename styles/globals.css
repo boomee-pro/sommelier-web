@@ -17,57 +17,20 @@
 * {
   box-sizing: border-box;
   font-family: 'DM Serif Text', serif;
-}
-
-html,
-body {
   padding: 0;
   margin: 0;
-  /* font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, */
-    /* Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif; */
+  /* Hide scrollbar */
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
 button {
+  /* Reset button style */
   cursor: pointer;
   border: none;
   outline: none;
 }
 
-.background {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background-image: url('/back.jpg');
-  background-size: cover;
-  background-repeat: no-repeat;
-  opacity: 0.1;
-  z-index: -1;
-}
-
-.spin {
-  animation: spin 2s infinite linear;
-}
-@keyframes spin {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(359deg);
-  }
-}
-
 ::-webkit-scrollbar {
   display: none;
-}
-
-* {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
-@media
-(prefers-reduced-motion: no-preference) {
-  html {
-    scroll-behavior: smooth;
-  }
 }

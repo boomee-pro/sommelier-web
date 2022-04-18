@@ -5,15 +5,15 @@ import CookieConsent from 'react-cookie-consent';
 import { CartProvider } from "contexts/CartContext";
 import { AuthProvider } from "contexts/AuthContext";
 
+import Layout from 'components/Layout/layout';
+
 export default function MyApp({ Component, pageProps }) {
   
-
-  const getLayout = Component.getLayout || ((page) => page);
-
   return (
     <AuthProvider>
       <CartProvider>
         <ToastContainer />
+
         <CookieConsent
           location="bottom"
           buttonText="J'accepte"
@@ -26,7 +26,9 @@ export default function MyApp({ Component, pageProps }) {
         </CookieConsent>
         
         
-        {getLayout(<Component {...pageProps} />)}
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
       </CartProvider>
     </AuthProvider>
   )

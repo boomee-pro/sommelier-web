@@ -3,20 +3,19 @@ import Footer from './footer';
 
 import Cart from '../Cart/cart';
 
-const Layout = ({noCartIcon, children, wines}) => {
+const Layout = ({noCartIcon, children}) => {
 
 
   return (
     <>
-      <div className="background" />
-        <Navbar />
-        {!noCartIcon && <Cart />}
-        <div style={{display: "flex", flexDirection: "column", minHeight: "100vh"}}>
-        <main style={{flex: 1}}>{children}</main>
-        <Footer />
-      </div>
-
-
+      <Navbar />
+      {!noCartIcon && <Cart />}
+      <main style={{position: "relative"}}>
+        <div style={{display: "flex", flexDirection: "column", minHeight: "90vh"}}>
+          <main style={{flex: 1}}>{children}</main>
+          <Footer />
+        </div>
+      </main>
     </>
   )
 

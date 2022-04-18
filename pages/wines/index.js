@@ -1,10 +1,10 @@
-import Head from "next/head"
+import Head from "next/head";
 
-import styles from "styles/wines.module.scss";
+import { Container, Row, Col } from 'react-grid-system';
 
 import Card from "components/card"
-import Layout from 'components/Layout/layout';
 import BreadCrumbs from "components/breadcrumbs";
+
 
 
 export async function getStaticProps() {
@@ -56,30 +56,22 @@ const Wines = ({ wines }) => {
         <title>Nos vins</title>
         <meta name="description" content="Liste des vins" />
       </Head>
-      <div className={styles.wines__container__main}>
-        <BreadCrumbs items={[
+      <Container>
+
+          <BreadCrumbs items={[
             {title: "Accueil", destination: "/"},
             {title: "Liste des vins", active: true,}
-        ]} />
+          ]} />
+          
+          <Row style={{rowGap: "5em"}}>
+            {wines.map((wine) => 
+              <Col xs={12} md={4} lg={3} key={wine.id}><Card wine={wine}/></Col>
+            )}
+          </Row>
 
-        <div className={styles.wines__container}>
-        {wines.map((wine) => 
-          <Card key={wine.id} wine={wine}/>
-        )}
-        </div>
-      </div>
-
-    
+        </Container>
 
     </>
-  )
-}
-
-Wines.getLayout = function getLayout(page) {
-  return (
-    <Layout>
-      {page}
-    </Layout>
   )
 }
 

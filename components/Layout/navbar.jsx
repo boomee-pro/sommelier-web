@@ -10,27 +10,27 @@ import { useAuth } from 'contexts/AuthContext';
 // ICONS
 import { BiMenu, BiSearch, BiDoorOpen, BiX } from "react-icons/bi";
 
+const navData = [
+  {label: "Accueil", href:"/"},
+  {label: "Vins", href:"/wines"},
+  {label: "Notre histoire", href:"/ourstory"},
+  {},
+]
 
-const Navbar = ({ wines }) => {
+const Navbar = () => {
+  const router = useRouter();
   const {logout, user} = useAuth();
   const [open, setOpen] = useState(false);
-
+  const [sticky, setSticky] = useState(false);
 
 
   useEffect(() => {
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', () => setSticky(window.scrollY > 25));
   }, []);
 
-  const handleScroll = () => {
-    const navbar = document.querySelector("#navbar");
-    if(!navbar) return;
-    window.scrollY > 20 ? navbar.classList.add(styles.sticky) : navbar.classList.remove(styles.sticky);
-  }
-
-  const router = useRouter();
 
   return (
-    <nav className={styles.nav__container} id="navbar">
+    <nav className={classNames(styles.nav__container, sticky && styles.sticky)}>
 
       <div className={styles.nav__background} />
       
@@ -41,12 +41,12 @@ const Navbar = ({ wines }) => {
           <div onClick={() => setOpen(false)} className={classNames(styles.icon, styles.cancelBtn, open && styles.show)}>
             <BiX size={30}/>
           </div>
+          
+          {navData.map((item, i) => 
+          <li key={i} className={classNames(router.pathname === item.href && styles.activeLink)}>
+              {item.label && <Link href={item.href}>{item.label}</Link>}
+          </li>)}
 
-          <li className={classNames(router.pathname === "/" && styles.activeLink)}><Link href="/">Accueil</Link></li>
-          <li className={classNames(router.pathname === "/wines" && styles.activeLink)}><Link href="/wines">Vins</Link></li>
-          <li className={classNames(router.pathname === "/ourshop" && styles.activeLink)}><Link href="/">Notre boutique</Link></li>
-          <li className={classNames(router.pathname === "/ourstory" && styles.activeLink)}><Link href="/">Notre histoire</Link></li>
-          <li className={styles.spacer}></li>
           <li>
             {(user.connected && user.details.length !== 0) ? 
             <Link href="/profile">{user.details.surname}</Link> : 
