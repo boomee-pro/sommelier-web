@@ -11,9 +11,9 @@ const WineDetails = ({wine}) => {
     
 	return (
 
-		<Row className={styles.checkout__card} style={{rowGap: '1.5em'}}>
+		<Row className={styles.card} style={{rowGap: '1.5em'}}>
 			<Col xs={12} md={6}>
-					<Row className={styles.wineData}>
+					<Row>
 						<Col xs={12} md={4}>
 							<Image
                   src={wine.img}
@@ -32,8 +32,8 @@ const WineDetails = ({wine}) => {
 					</Row>
 			</Col>
 			<Col xs={12} md={2}>
-				<div className={styles.card__quantity}>
-					<div className={styles.quantity__style}>
+				<div className={styles.quantity}>
+					<div className={styles.button}>
 						<button onClick={() => decrementQuantity(wine.id)}>-</button>
 						<p>{wine.quantity}</p>
 						<button onClick={() => incrementQuantity(wine.id)}>+</button>

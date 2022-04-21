@@ -1,6 +1,7 @@
 import { createContext, useContext, useState, useEffect } from "react";
 import axios from "axios";
 import jwtDecode from "jwt-decode";
+import nookies, { setCookie, destroyCookie } from "nookies";
 
 const AuthContext = createContext();
 
@@ -8,19 +9,26 @@ export function useAuth() {
   return useContext(AuthContext);
 }
 
-export function AuthProvider({ children }) {
+export const getUser = async(ctx) => {
+  return await axios
+    .get('http://localhost:3030/auth/reconnect', {
+      headers: nookies.get(ctx).token ?  { "Authorization": nookies.get(ctx).token } : null,
+    }).then((response) => {
+      // console.log(response);
+      if(response.data) return { connected: true, details: response.data.user }
+      else return { connected: false, details: {} };
+    }).catch((err) => {
+      return {connected: false, details: {} };
+    })
+    
+}
 
-  axios.defaults.baseURL = "http://localhost:3000/";
+export function AuthProvider({myAuth, children}) {
 
-  const [isLoading, setLoading] = useState(true);
-
-  const [user, setUser] = useState({
-    connected: false,
-    details: {}
-  });
+  const [user, setUser] = useState(myAuth || { connected: false, details: {}});
 
   function login(body) {
-    return axios.post("auth/sign-in", body)
+    return axios.post("http://localhost:3030/auth/sign-in", body)
     .then((res) => {
       setUser({
         connected: true,
@@ -30,6 +38,7 @@ export function AuthProvider({ children }) {
       return {type: "success", message: res.data.message}
     })
     .catch((err) => {
+      // console.log(err);
       return {type: "error", message: err.response.data};
     })
   }
@@ -39,43 +48,42 @@ export function AuthProvider({ children }) {
       connected: false,
       details: {}
     });
-    localStorage.removeItem('token');
+    destroyCookie(null, 'token');
   }
 
-  useEffect(() => {
-    const fetchUser = async () => {
-      let token = localStorage.getItem("token");
-      if(!token) {
-        setLoading(false);
-        return;
-      }
+  // useEffect(() => {
+  //   const fetchUser = async () => {
+  //     let token = localStorage.getItem("token");
+  //     if(!token) {
+  //       setLoading(false);
+  //       return;
+  //     }
 
-      const decodedToken = jwtDecode(token);
-      if(decodedToken.exp * 1000 < Date.now()) logout();
-      else {
-        axios.defaults.headers.common['Authorization'] = token;
-        await axios.get("auth/reconnect")
-        .then((res) => {
-          setUser({
-            connected: true,
-            details: res.data.user,
-          })
-        }).catch((err) => {
-          logout();
-        })
-        setLoading(false);
-      }
-    }
+  //     const decodedToken = jwtDecode(token);
+  //     if(decodedToken.exp * 1000 < Date.now()) logout();
+  //     else {
+  //       axios.defaults.headers.common['Authorization'] = token;
+  //       await axios.get("auth/reconnect")
+  //       .then((res) => {
+  //         setUser({
+  //           connected: true,
+  //           details: res.data.user,
+  //         })
+  //       }).catch((err) => {
+  //         logout();
+  //       })
+  //       setLoading(false);
+  //     }
+  //   }
 
-    fetchUser();
-  }, []);
+  //   fetchUser();
+  // }, []);
 
   const value = {
     user,
     login,
     logout,
     connected: user.connected,
-    isLoading
   }
 
   return (
@@ -86,6 +94,9 @@ export function AuthProvider({ children }) {
 }
 
 const setAuthorizationToken = (token) => {
-  localStorage.setItem('token', `Bearer ${token}`);
-  axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+  setCookie(null, 'token', `Bearer ${token}`, {
+    maxAge: 30 * 24 * 60 * 60,
+    path: '/',
+  })
+  // axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
 }

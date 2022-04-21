@@ -1,20 +1,24 @@
+import { useEffect } from "react";
+
 const { useAuth } = require("contexts/AuthContext");
 const { useRouter } = require("next/router");
 
 const withoutAuth = (Component) => {
-  const WAuth = (props) => {
+  const Auth = (props) => {
 
-    const {connected, isLoading} = useAuth();
+    const {connected} = useAuth();
     const router = useRouter();
 
-    if(isLoading) return "Loading...";
-    if(connected) {
-      router.push('/'); 
-      return;
-    } 
-    return <Component {...props} />;
+    useEffect(() => {
+      if(connected) {
+        router.push('/');
+        return;
+      }
+    })
+
+    if(!connected) return <Component {...props} />;
   }
-  return WAuth;
+  return Auth;
 }
 
 export default withoutAuth;

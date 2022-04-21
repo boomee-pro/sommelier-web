@@ -57,14 +57,13 @@ $grey: hsl(0, 0%, 60%);
 }
 
 
-.checkout__card {
+.card {
   width: 100% !important;
   height: 100% !important;
   margin: auto !important;
   position: relative;
   padding: 20px;
   text-align: center;
-
 
   .name {
     display: flex;
@@ -80,9 +79,6 @@ $grey: hsl(0, 0%, 60%);
     }
 
   }
-
-
-  
   p {
     height: 100%;
     display: flex;
@@ -94,13 +90,12 @@ $grey: hsl(0, 0%, 60%);
   }
 
 
-
-  .card__quantity {
+  .quantity {
     display: flex;
     height: 100% !important;
     align-items: center;
     justify-content: center;
-    .quantity__style {
+    .button {
       display: flex;
       align-items: center;
       justify-content: center;

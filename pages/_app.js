@@ -1,16 +1,17 @@
 import 'styles/globals.css';
+import App from 'next/app';
 import { ToastContainer } from 'react-toastify';
 import CookieConsent from 'react-cookie-consent';
 
 import { CartProvider } from "contexts/CartContext";
-import { AuthProvider } from "contexts/AuthContext";
+import { AuthProvider, getUser } from "contexts/AuthContext";
 
 import Layout from 'components/Layout/layout';
 
-export default function MyApp({ Component, pageProps }) {
+const MyApp = ({ Component, pageProps, auth }) => {
   
   return (
-    <AuthProvider>
+    <AuthProvider myAuth={auth}>
       <CartProvider>
         <ToastContainer />
 
@@ -33,3 +34,11 @@ export default function MyApp({ Component, pageProps }) {
     </AuthProvider>
   )
 }
+
+MyApp.getInitialProps = async (appContext) => {
+  const appProps = await App.getInitialProps(appContext);
+  const auth = await getUser(appContext.ctx);
+  return {...appProps, auth:auth}
+}
+
+export default MyApp;

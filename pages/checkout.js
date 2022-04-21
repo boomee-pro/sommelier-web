@@ -20,7 +20,6 @@ const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY)
 const Checkout = () => {
 
   const [loading, setLoading] = useState(false);
-
   const {cart, getTotalPrice} = useCart();
 
 
@@ -78,12 +77,9 @@ const Checkout = () => {
           <div className={styles.content}>
             <div className={styles.data}>
               <h3>Total<span>{getTotalPrice()} €</span></h3>
-              {/* <Link href="/order" passHref> */}
                 <button onClick={createCheckoutSession}>
                   {loading ? "Chargement.." : "Procéder au paiement"}
-                  {/* Procéder au paiement */}
                 </button>
-              {/* </Link> */}
             </div>
           </div>
         </Col>
