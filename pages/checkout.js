@@ -5,7 +5,7 @@ import { useState } from "react";
 import styles from "styles/checkout.module.scss";
 
 import Layout from "components/Layout/layout";
-import WineDetails from "components/Checkout/wineDetails";
+import WineDetails from "components/checkoutWine";
 import BreadCrumbs from "components/breadcrumbs";
 
 
@@ -14,6 +14,8 @@ import { useCart } from "contexts/CartContext";
 import { loadStripe } from "@stripe/stripe-js";
 import axios from "axios";
 
+import { Container, Row, Col } from "react-grid-system"; 
+const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY);
 
 const Checkout = () => {
 
@@ -22,7 +24,6 @@ const Checkout = () => {
   const {cart, getTotalPrice} = useCart();
 
 
-  const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY);
   const createCheckoutSession = async() => {
     setLoading(true);
     const stripe = await stripePromise;
@@ -36,7 +37,7 @@ const Checkout = () => {
     setLoading(false);
   }
 
-  if(cart.length === 0) return <div className={styles.checkout__container}><p>Vous n&apos;avez pas de panier</p></div>
+  if(cart.length === 0) return <div className={styles.checkout__container}><p>Votre panier est vide !</p></div>
 
   return (
     <>
@@ -45,36 +46,37 @@ const Checkout = () => {
       <meta name="description" content="Liste des vins" />
     </Head>
 
-    <div className={styles.checkout__container}>
-
+    <Container className={styles.checkout}>
       <BreadCrumbs items={[
         {title: "Accueil", destination: "/"},
         {title: "Validation panier", active: true,}
       ]} />
-
       <h2>Votre commande</h2>
 
-      <div className={styles.checkout__subcontainer}>
-        <div className={styles.checkout__details}>
-          <div className={styles.details__title}>
-            <p>Produit</p>
-            <p>Quantité</p>
-            <p>Prix</p>
-            <p>Total</p>
+      <Row style={{rowGap: "5em"}}>
+
+        <Col xs={12} md={9}>
+          <div className={styles.headers}>
+            <Row style={{width:'100%', margin: "auto"}}>
+              <Col md={6}>Produit</Col>
+              <Col md={2}>Quantité</Col>
+              <Col md={2}>Prix</Col>
+              <Col md={2}>Total</Col>
+            </Row>
           </div>
           
-          <div className={styles.checkout__content}>
+          <div className={styles.content}>
             {cart.map((item) => <WineDetails wine={item} key={item.id}/>)}
           </div>
-        </div>
+        </Col>
 
-        <div className={styles.details__summary}>
-          <div className={styles.details__title}>
-            Résumé
+        <Col xs={12} md={3}>
+          <div className={styles.headers}>
+            <p>Résumé</p>
           </div>
 
-          <div className={styles.checkout__content}>
-            <div className={styles.content__data}>
+          <div className={styles.content}>
+            <div className={styles.data}>
               <h3>Total<span>{getTotalPrice()} €</span></h3>
               {/* <Link href="/order" passHref> */}
                 <button onClick={createCheckoutSession}>
@@ -84,20 +86,15 @@ const Checkout = () => {
               {/* </Link> */}
             </div>
           </div>
-        </div>
+        </Col>
 
-      </div>
-    </div>
+      </Row>
+
+
+
+    </Container>
     </>
   )
 }
 
-Checkout.getLayout = function getLayout(page) {
-  return (
-    <Layout noCartIcon={true}>
-      {page}
-    </Layout>
-  )
-}
- 
 export default Checkout;

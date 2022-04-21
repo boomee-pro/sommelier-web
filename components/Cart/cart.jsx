@@ -18,8 +18,8 @@ const Cart = () => {
 
   return (
     <>
-      <div className={styles.cart__float} onClick={() => setOpen(true)}>
-        <BiCart className={styles.cart__float__icon} size={70} />
+      <div className={styles.cartIcon} onClick={() => setOpen(true)}>
+        <BiCart className={styles.cartIcon__bi} size={70} />
         <span>{getItemsCount()}</span>
       </div>
 
