@@ -21,11 +21,16 @@ async function CreateStripeSession(req, res) {
     );
   
     const session = await stripe.checkout.sessions.create({
+      customer_email: "sylvain.bouillon@live.br",
+      billing_address_collection: 'auto',
+      shipping_address_collection: {
+        allowed_countries: ['BE'],
+      },
       payment_method_types: ["card"],
       line_items: stripeItems,
       mode: "payment",
-      success_url: redirectURL + "/success",
-      cancel_url: redirectURL + "/errororder"
+      success_url: redirectURL + "/success/{CHECKOUT_SESSION_ID}",
+      cancel_url: redirectURL + "/error/{CHECKOUT_SESSION_ID}"
     });
   
     res.json({ id: session.id });

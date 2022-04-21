@@ -7,9 +7,6 @@ import styles from 'styles/auth.module.scss';
 import classNames from "classnames";
 import Wine from 'public/wine2.png';
 
-import "react-toastify/dist/ReactToastify.css";
-import createToastMessage from "utils/ToastMessage";
-
 import {useAuth} from 'contexts/AuthContext';
 import withoutAuth from "utils/withoutAuth";
 
@@ -20,7 +17,6 @@ import { BiEnvelope, BiLockAlt } from "react-icons/bi";
 const SignIn = () => {
 
   const {login} = useAuth();
-  const router = useRouter();
 
   const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState({}); 
@@ -37,13 +33,8 @@ const SignIn = () => {
     e.preventDefault();
     setLoading(true);
     await sleep(500);
-    login(data).then(({type, message}) => {
-      if(type === "success") createToastMessage(type, message);
-      else {
-        setErrors({...message});
-        setLoading(false);
-      }
-    })
+    login(data).then((err) => setErrors({...err}) )
+    setLoading(false);
   }
 
   const handleChange = (e) => {
@@ -102,5 +93,7 @@ const SignIn = () => {
     </>
   )
 }
+
+SignIn.getLayout = "toot";
 
 export default withoutAuth(SignIn);

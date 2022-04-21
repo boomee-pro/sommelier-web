@@ -57,7 +57,7 @@ const Home = ({wines}) => {
         sr().reveal(favoritesWineAnim.current.querySelectorAll("div"), {
           duration: 250,
           delay: 150,
-          interval: 100,
+          interval: 40,
           origin: "bottom",
           distance: "20px",
           reset: false,

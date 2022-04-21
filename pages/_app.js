@@ -1,6 +1,6 @@
 import 'styles/globals.css';
 import App from 'next/app';
-import { ToastContainer } from 'react-toastify';
+import { Toaster } from "react-hot-toast";
 import CookieConsent from 'react-cookie-consent';
 
 import { CartProvider } from "contexts/CartContext";
@@ -9,11 +9,11 @@ import { AuthProvider, getUser } from "contexts/AuthContext";
 import Layout from 'components/Layout/layout';
 
 const MyApp = ({ Component, pageProps, auth }) => {
-  
+    
   return (
     <AuthProvider myAuth={auth}>
       <CartProvider>
-        <ToastContainer />
+        <Toaster />
 
         <CookieConsent
           location="bottom"
@@ -27,7 +27,7 @@ const MyApp = ({ Component, pageProps, auth }) => {
         </CookieConsent>
         
         
-        <Layout>
+        <Layout noLayout={true}>
           <Component {...pageProps} />
         </Layout>
       </CartProvider>

@@ -3,8 +3,9 @@ import Footer from './footer';
 
 import Cart from '../Cart/cart';
 
-const Layout = ({noCartIcon, children}) => {
+const Layout = ({noCartIcon, noLayout, children}) => {
 
+  console.log(noLayout);
 
   return (
     <>

@@ -4,7 +4,7 @@ const { useAuth } = require("contexts/AuthContext");
 const { useRouter } = require("next/router");
 
 const withoutAuth = (Component) => {
-  const Auth = (props) => {
+  const Check = (props) => {
 
     const {connected} = useAuth();
     const router = useRouter();
@@ -18,7 +18,7 @@ const withoutAuth = (Component) => {
 
     if(!connected) return <Component {...props} />;
   }
-  return Auth;
+  return Check;
 }
 
 export default withoutAuth;

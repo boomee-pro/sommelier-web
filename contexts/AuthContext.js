@@ -2,6 +2,7 @@ import { createContext, useContext, useState, useEffect } from "react";
 import axios from "axios";
 import jwtDecode from "jwt-decode";
 import nookies, { setCookie, destroyCookie } from "nookies";
+import toast from "react-hot-toast";
 
 const AuthContext = createContext();
 
@@ -35,11 +36,10 @@ export function AuthProvider({myAuth, children}) {
         details: res.data.user
       });
       setAuthorizationToken(res.data.token);
-      return {type: "success", message: res.data.message}
+      toast.success(res.data.message);
     })
     .catch((err) => {
-      // console.log(err);
-      return {type: "error", message: err.response.data};
+      return err.response.data;
     })
   }
 
