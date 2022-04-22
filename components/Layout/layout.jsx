@@ -4,17 +4,15 @@ import Footer from './footer';
 import Cart from '../Cart/cart';
 
 const Layout = ({noCartIcon, noLayout, children}) => {
-
-  console.log(noLayout);
-
   return (
     <>
-      <Navbar />
-      {!noCartIcon && <Cart />}
+      <div className="background"/>
+      {!noLayout && <Navbar />}
+      {(!noCartIcon || !noLayout) && <Cart />}
       <main style={{position: "relative"}}>
-        <div style={{display: "flex", flexDirection: "column", minHeight: "90vh"}}>
+        <div style={{display: "flex", flexDirection: "column", minHeight: "87vh"}}>
           <main style={{flex: 1}}>{children}</main>
-          <Footer />
+          {!noLayout && <Footer />}
         </div>
       </main>
     </>

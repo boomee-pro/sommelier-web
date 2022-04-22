@@ -122,14 +122,4 @@ const Order = () => {
   )
 }
 
-Order.getLayout = function getLayout(page) {
-  return (
-    <Layout noCartIcon>
-      {page}
-    </Layout>
-  )
-}
-
-
-
 export default Order;

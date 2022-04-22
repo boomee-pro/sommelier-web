@@ -94,6 +94,4 @@ const SignIn = () => {
   )
 }
 
-SignIn.getLayout = "toot";
-
 export default withoutAuth(SignIn);

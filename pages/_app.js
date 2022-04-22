@@ -8,10 +8,13 @@ import { AuthProvider, getUser } from "contexts/AuthContext";
 
 import Layout from 'components/Layout/layout';
 
-const MyApp = ({ Component, pageProps, auth }) => {
-    
+const noLayout = ["/sign-in", "/sign-up"];
+const noCart = ["/success/[id]", "/checkout"];
+
+const MyApp = ({ Component, pageProps, router, auth }) => {
+  
   return (
-    <AuthProvider myAuth={auth}>
+    <AuthProvider authData={auth}>
       <CartProvider>
         <Toaster />
 
@@ -27,7 +30,7 @@ const MyApp = ({ Component, pageProps, auth }) => {
         </CookieConsent>
         
         
-        <Layout noLayout={true}>
+        <Layout noLayout={noLayout.includes(router.pathname)} noCartIcon={noCart.includes(router.pathname)}>
           <Component {...pageProps} />
         </Layout>
       </CartProvider>

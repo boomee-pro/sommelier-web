@@ -120,7 +120,7 @@ $grey: hsl(0, 0%, 60%);
   }
 }
 
-.checkout__card:not(:last-child):after {
+.card:not(:last-child):after {
   content: "";
   position: absolute;
   width: 90%;

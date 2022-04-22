@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, useEffect } from "react";
+import { createContext, useContext, useState } from "react";
 import axios from "axios";
 import jwtDecode from "jwt-decode";
 import nookies, { setCookie, destroyCookie } from "nookies";
@@ -11,22 +11,27 @@ export function useAuth() {
 }
 
 export const getUser = async(ctx) => {
+  const token = nookies.get(ctx).token;
+  if(!token) return;
+  const decodedToken = jwtDecode(token);
+  if(decodedToken.exp * 1000 < Date.now()) {
+    nookies.destroy(ctx, 'token');
+    return;
+  }
   return await axios
     .get('http://localhost:3030/auth/reconnect', {
       headers: nookies.get(ctx).token ?  { "Authorization": nookies.get(ctx).token } : null,
     }).then((response) => {
-      // console.log(response);
-      if(response.data) return { connected: true, details: response.data.user }
-      else return { connected: false, details: {} };
-    }).catch((err) => {
-      return {connected: false, details: {} };
+      if(response.data) return response.data ? { connected: true, details: response.data.user } : undefined;
+    }).catch(() => {
+      return;
     })
     
 }
 
-export function AuthProvider({myAuth, children}) {
+export function AuthProvider({authData, children}) {
 
-  const [user, setUser] = useState(myAuth || { connected: false, details: {}});
+  const [user, setUser] = useState(authData || { connected: false, details: {}});
 
   function login(body) {
     return axios.post("http://localhost:3030/auth/sign-in", body)
@@ -49,35 +54,8 @@ export function AuthProvider({myAuth, children}) {
       details: {}
     });
     destroyCookie(null, 'token');
+    toast.success("Vous êtes maintenant déconnecté !")
   }
-
-  // useEffect(() => {
-  //   const fetchUser = async () => {
-  //     let token = localStorage.getItem("token");
-  //     if(!token) {
-  //       setLoading(false);
-  //       return;
-  //     }
-
-  //     const decodedToken = jwtDecode(token);
-  //     if(decodedToken.exp * 1000 < Date.now()) logout();
-  //     else {
-  //       axios.defaults.headers.common['Authorization'] = token;
-  //       await axios.get("auth/reconnect")
-  //       .then((res) => {
-  //         setUser({
-  //           connected: true,
-  //           details: res.data.user,
-  //         })
-  //       }).catch((err) => {
-  //         logout();
-  //       })
-  //       setLoading(false);
-  //     }
-  //   }
-
-  //   fetchUser();
-  // }, []);
 
   const value = {
     user,
