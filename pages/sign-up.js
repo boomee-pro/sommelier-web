@@ -1,3 +1,4 @@
+import { useState } from "react";
 import Head from "next/head";
 import Image from 'next/image';
 
@@ -5,11 +6,43 @@ import styles from 'styles/auth.module.scss';
 import Wine from 'public/wine2.png';
 
 import withoutAuth from "utils/withoutAuth";
+import { useAuth } from "contexts/AuthContext";
 
 // ICONS
 import { BiEnvelope, BiLockAlt, BiUser } from "react-icons/bi";
 
 const SignUp = () => {
+
+  const { authAction } = useAuth();
+
+  const [loading, setLoading] = useState(false);
+  const [errors, setErrors] = useState({});
+  const [data, setData] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
+  })
+
+  const sleep = (milliseconds) => {
+    return new Promise(resolve => setTimeout(resolve, milliseconds))
+  }
+
+  const handleSubmit = async(e) => {
+    e.preventDefault();
+    setLoading(true);
+    await sleep(500);
+    authAction("sign-up", data).then((err) => setErrors({...err}))
+    setLoading(false);
+  }
+
+  const handleChange = (e) => {
+    setData({
+      ...data,
+      [e.target.name]: e.target.value
+    })
+  }
 
   return (
     
@@ -33,12 +66,12 @@ const SignUp = () => {
               <div className={styles.split__container}>
                 <div className={styles.form__input}>
                   <BiUser size={24} />
-                  <input type="text" placeholder='Prénom*'/>
+                  <input type="text" name="firstName" placeholder='Prénom*'/>
                 </div>
 
                 <div className={styles.form__input}>
                   <BiUser size={24} />
-                  <input type="text" placeholder='Nom*'/>
+                  <input type="text" name="lastName" placeholder='Nom*'/>
                 </div>
               </div>
 
@@ -46,18 +79,18 @@ const SignUp = () => {
 
               <div className={styles.form__input}>
                 <BiEnvelope size={24}/>
-                <input type="text" placeholder='Adresse e-mail*'/>
+                <input type="text" name="email" placeholder='Adresse e-mail*'/>
               </div>
 
 
               <div className={styles.form__input}>
                 <BiLockAlt size={24} />
-                <input type="password" placeholder='Mot de passe*' />
+                <input type="password" name="password" placeholder='Mot de passe*' />
               </div>
 
               <div className={styles.form__input}>
                 <BiLockAlt size={24} />
-                <input type="password" placeholder='Confirmation mot de passe*' />
+                <input type="password" name="confirmPassword" placeholder='Confirmation mot de passe*' />
               </div>
 
               <button type="submit">S&apos;inscrire</button>

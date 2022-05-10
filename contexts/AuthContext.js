@@ -33,8 +33,8 @@ export function AuthProvider({authData, children}) {
 
   const [user, setUser] = useState(authData || { connected: false, details: {}});
 
-  function login(body) {
-    return axios.post("http://localhost:3030/auth/sign-in", body)
+  function authAction(action, body) {
+    return axios.post(`http://localhost:3030/auth/${action}`, body)
     .then((res) => {
       setUser({
         connected: true,
@@ -59,7 +59,7 @@ export function AuthProvider({authData, children}) {
 
   const value = {
     user,
-    login,
+    authAction,
     logout,
     connected: user.connected,
   }

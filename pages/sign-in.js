@@ -16,7 +16,7 @@ import { BiEnvelope, BiLockAlt } from "react-icons/bi";
 
 const SignIn = () => {
 
-  const {login} = useAuth();
+  const {authAction} = useAuth();
 
   const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState({}); 
@@ -33,7 +33,7 @@ const SignIn = () => {
     e.preventDefault();
     setLoading(true);
     await sleep(500);
-    login(data).then((err) => setErrors({...err}) )
+    authAction("sign-in", data).then((err) => setErrors({...err}) )
     setLoading(false);
   }
 
